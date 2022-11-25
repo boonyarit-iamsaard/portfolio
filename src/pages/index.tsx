@@ -1,4 +1,4 @@
-import { Container, Typography } from '@mui/material';
+import { Typography } from '@mui/material';
 import { NextPage } from 'next';
 import Head from 'next/head';
 
@@ -8,11 +8,14 @@ const Home: NextPage = () => {
       <Head>
         <title>Welcome to My Portfolio</title>
       </Head>
-      <Container maxWidth="md" sx={{ py: 2, textAlign: 'center' }}>
-        <Typography component="h1" variant="h3" gutterBottom>
-          Welcome to My Portfolio
-        </Typography>
-      </Container>
+      <Typography
+        component="h1"
+        variant="h3"
+        gutterBottom
+        sx={{ textAlign: 'center' }}
+      >
+        Welcome to My Portfolio
+      </Typography>
     </>
   );
 };
