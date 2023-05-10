@@ -9,8 +9,12 @@
 
   body {
     @apply relative;
-    @apply min-h-screen;
     @apply font-sans;
     @apply antialiased;
+  }
+
+  body,
+  main {
+    @apply min-h-screen;
   }
 }
