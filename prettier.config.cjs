@@ -17,6 +17,8 @@ const config = {
     '^@/styles/(.*)$',
     '^@/app/(.*)$',
     '',
+    '^@/assets/(.*)$',
+    '',
     '^[./]',
   ],
   importOrderSeparation: false,
