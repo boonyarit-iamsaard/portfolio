@@ -12,8 +12,10 @@ export default function Home() {
             <div className="group relative aspect-square w-60 overflow-hidden rounded-full outline-none ring-slate-200 transition-all duration-300 ease-in-out hover:ring-2 hover:ring-offset-2">
               <Image
                 src={profile}
-                fill
+                width={240}
+                height={240}
                 className="object-fill transition-all duration-300 ease-in-out group-hover:scale-110"
+                priority
                 alt="Profile"
               />
             </div>
