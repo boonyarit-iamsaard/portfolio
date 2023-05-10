@@ -1,0 +1,30 @@
+{
+  "css.lint.unknownAtRules": "ignore",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true,
+    "source.organizeImports": true
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+  "tailwindCSS.experimental.classRegex": [
+    ["cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"]
+  ]
+}
