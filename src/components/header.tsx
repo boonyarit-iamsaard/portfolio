@@ -2,11 +2,11 @@ import Link from 'next/link';
 
 export function Header() {
   return (
-    <header className="fixed z-10 flex h-16 w-full items-center border-b border-b-slate-100 bg-white supports-backdrop-blur-md:bg-white/60 supports-backdrop-blur-md:backdrop-blur-md">
+    <header className="fixed z-10 flex h-16 w-full items-center border-b border-b-slate-100 bg-white supports-backdrop-blur-md:bg-white/75 supports-backdrop-blur-md:backdrop-blur-md">
       <div className="container flex items-center justify-between">
         <Link
           href="/"
-          className="block rounded p-2 outline-none ring-slate-200 transition-colors duration-300 ease-in-out hover:bg-slate-100 focus:ring-2"
+          className="block rounded p-2 outline-none ring-slate-200 transition-all duration-300 ease-in-out hover:bg-slate-100 focus:bg-slate-100 focus:ring-2 focus:ring-offset-2"
         >
           <span className="sr-only">Home</span>
           <svg
@@ -21,14 +21,16 @@ export function Header() {
             strokeLinejoin="round"
           >
             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-            <path d="M5 12l-2 0l9 -9l9 9l-2 0"></path>
-            <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7"></path>
-            <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6"></path>
+            <path d="M7 4h-4v16h4"></path>
+            <path d="M17 4h4v16h-4"></path>
+            <path d="M8 16h.01"></path>
+            <path d="M12 16h.01"></path>
+            <path d="M16 16h.01"></path>
           </svg>
         </Link>
         <button
           type="button"
-          className="rounded p-2 outline-none ring-slate-200 transition-colors duration-300 ease-in-out hover:bg-slate-100 focus:ring-2"
+          className="rounded p-2 outline-none ring-slate-200 transition-all duration-300 ease-in-out hover:bg-slate-100 focus:bg-slate-100 focus:ring-2 focus:ring-offset-2"
         >
           <span className="sr-only">Menu</span>
           <svg
