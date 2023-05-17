@@ -25,7 +25,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.variable}>
         <Header />
-        <main className="pt-16">{children}</main>
+        <main>
+          <div className="container pb-8 pt-24">{children}</div>
+        </main>
         <Footer />
       </body>
     </html>
