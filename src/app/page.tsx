@@ -5,7 +5,7 @@ import profile from '@/assets/images/profile.jpg';
 
 export default function Home() {
   return (
-    <div className="space-y-8 py-8">
+    <div className="space-y-8">
       <section>
         <div className="container">
           <div className="space-y-4">
@@ -44,7 +44,7 @@ export default function Home() {
               et eius doloribus necessitatibus, alias quod ducimus aperiam sit
               corporis deleniti.
             </p>
-            <Link href="/">More about me</Link>
+            <Link href="/about">More about me</Link>
           </div>
         </div>
       </section>
@@ -85,7 +85,7 @@ export default function Home() {
               et eius doloribus necessitatibus, alias quod ducimus aperiam sit
               corporis deleniti.
             </p>
-            <Link href="/">More articles</Link>
+            <Link href="/articles">More articles</Link>
           </div>
         </div>
       </section>
