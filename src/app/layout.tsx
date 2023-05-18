@@ -12,7 +12,10 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: 'Portfolio',
+  title: {
+    default: 'Portfolio',
+    template: '%s | Portfolio',
+  },
   description: 'A personal website',
 };
 
