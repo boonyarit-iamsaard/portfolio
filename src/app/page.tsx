@@ -9,7 +9,7 @@ export default function Home() {
       <section>
         <div className="container">
           <div className="space-y-4">
-            <div className="group relative aspect-square w-60 overflow-hidden rounded-full outline-none ring-slate-200 transition-all duration-300 ease-in-out hover:ring-2 hover:ring-offset-2">
+            <div className="group relative aspect-square w-60 overflow-hidden rounded-full outline-none ring-secondary transition-all duration-300 ease-in-out hover:ring-2 hover:ring-offset-2">
               <Image
                 src={profile}
                 width={240}
@@ -19,14 +19,16 @@ export default function Home() {
                 alt="Profile"
               />
             </div>
-            <div className="space-y-2">
-              <p className="uppercase text-slate-500">TAMBOON.DEV</p>
-              <h1 className="text-4xl font-bold">
+            <div className="space-y-2 text-xl text-muted-foreground">
+              <p className="uppercase">TAMEBOON.DEV</p>
+              <h1 className="text-4xl font-bold text-foreground">
                 A Self-taught Web Developer
               </h1>
-              <p className="text-slate-500">
-                I build websites with a focus on responsive design.
+              <p>
+                I craft responsive websites and web apps for quality user
+                experiences.
               </p>
+              <p>Let&apos;s build your strong online presence.</p>
             </div>
           </div>
         </div>
@@ -39,12 +41,17 @@ export default function Home() {
               Hi,&nbsp;<span className="inline-block animate-wave">👋</span>
               &nbsp;I&apos;m Boonyarit Iamsa-ard
             </h2>
-            <p className="text-slate-500">
+            <p className="text-muted-foreground">
               Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facilis
               et eius doloribus necessitatibus, alias quod ducimus aperiam sit
               corporis deleniti.
             </p>
-            <Link href="/about">More about me</Link>
+            <Link
+              href="/about"
+              className="block text-sm underline underline-offset-4"
+            >
+              More about me
+            </Link>
           </div>
         </div>
       </section>
@@ -71,7 +78,12 @@ export default function Home() {
               et eius doloribus necessitatibus, alias quod ducimus aperiam sit
               corporis deleniti.
             </p>
-            <Link href="/">More projects</Link>
+            <Link
+              href="/"
+              className="block text-sm underline underline-offset-4"
+            >
+              More projects
+            </Link>
           </div>
         </div>
       </section>
@@ -85,7 +97,12 @@ export default function Home() {
               et eius doloribus necessitatibus, alias quod ducimus aperiam sit
               corporis deleniti.
             </p>
-            <Link href="/articles">More articles</Link>
+            <Link
+              href="/articles"
+              className="block text-sm underline underline-offset-4"
+            >
+              More articles
+            </Link>
           </div>
         </div>
       </section>

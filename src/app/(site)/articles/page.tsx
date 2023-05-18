@@ -18,10 +18,10 @@ export default async function Page() {
       <div className="grid gap-4">
         {articles.map(({ title, slug, author, publishDate }) => (
           <Link key={slug} href={`/articles/${slug}`} className="group block">
-            <div className="rounded border p-4 shadow-sm transition-colors duration-300 ease-in-out group-hover:bg-slate-50">
+            <div className="rounded-lg border p-4 transition-colors duration-300 ease-in-out group-hover:bg-muted">
               <p className="text-2xl font-bold">{title}</p>
-              <p className="text-slate-500">{author}</p>
-              <p className="text-slate-500">{publishDate}</p>
+              <p className="text-muted-foreground">{author}</p>
+              <p className="text-muted-foreground">{publishDate}</p>
             </div>
           </Link>
         ))}

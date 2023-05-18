@@ -31,7 +31,7 @@ export default async function Page({ params: { slug } }: PageProps) {
       <div className="space-y-16">
         <div className="space-y-4 text-center">
           <h1 className="text-4xl font-bold">{title}</h1>
-          <p className="text-sm text-slate-500">
+          <p className="text-sm text-muted-foreground">
             By {author} on {publishDate}
           </p>
         </div>
