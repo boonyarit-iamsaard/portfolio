@@ -5,6 +5,7 @@ import type { ReactNode } from 'react';
 
 import { fontSans } from '@/core/styles/fonts';
 import { AppFooter } from '@/common/components/layout/app-footer';
+import { AppHeader } from '@/common/components/layout/app-header';
 import { cn } from '@/common/helpers/cn';
 
 export const metadata: Metadata = {
@@ -27,6 +28,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         )}
       >
         <div className="bg-background relative flex min-h-svh flex-col">
+          <AppHeader />
           {children}
           <AppFooter />
         </div>

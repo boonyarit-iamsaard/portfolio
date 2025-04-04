@@ -1,5 +1,4 @@
-import { Icons } from '../icons';
-import { Button } from '../ui/button';
+import { SocialLinks } from '@/common/components/social-links';
 
 export function AppFooter() {
   return (
@@ -9,28 +8,7 @@ export function AppFooter() {
           &copy; {new Date().getFullYear()} Boonyarit Iamsa-ard. All rights
           reserved.
         </p>
-        <div className="flex items-center">
-          <Button variant="ghost" size="icon" asChild>
-            <a
-              href="https://github.com/boonyarit-iamsaard"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="GitHub"
-            >
-              <Icons.gitHub className="h-5 w-5" />
-            </a>
-          </Button>
-          <Button variant="ghost" size="icon" asChild>
-            <a
-              href="https://linkedin.com/in/boonyarit-iamsaard"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="LinkedIn"
-            >
-              <Icons.linkedIn className="h-5 w-5" />
-            </a>
-          </Button>
-        </div>
+        <SocialLinks />
       </div>
     </footer>
   );

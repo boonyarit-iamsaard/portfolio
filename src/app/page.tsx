@@ -25,8 +25,9 @@ export default function Home() {
   return (
     <main className="relative flex-1 space-y-16">
       {/* Hero Section */}
-      <section className="bg-muted/50 flex min-h-[50vh] flex-col items-center justify-center px-4 py-16">
-        <div className="flex max-w-2xl flex-col items-center justify-center gap-6 text-center">
+      <section className="bg-muted/50 flex flex-col items-center justify-center px-4 py-16">
+        <div className="h-16" />
+        <div className="flex min-h-[50vh] max-w-2xl flex-col items-center justify-center gap-6 text-center">
           <span className="text-muted-foreground/80 bg-muted/80 flex animate-pulse items-center gap-1.5 rounded-full px-2 py-1 text-xs">
             <Construction className="text-primary h-3.5 w-3.5" />
             This site is work in progress
