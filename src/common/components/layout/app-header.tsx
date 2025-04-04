@@ -125,7 +125,7 @@ export function AppHeader() {
     >
       <div className="container flex h-16 items-center justify-between gap-4">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2">
+        <Link href="/" className="flex items-center gap-2" aria-label="Home">
           <TerminalSquareIcon className="h-6 w-6" />
           <span className="hidden font-bold sm:inline-block">Boonyarit I.</span>
         </Link>
