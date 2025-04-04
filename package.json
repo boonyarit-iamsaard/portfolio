@@ -5,15 +5,15 @@
   "type": "module",
   "scripts": {
     "build": "next build",
-    "ci": "prettier --check . && next lint && tsc --noEmit",
     "dev": "next dev --turbopack",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "lint": "next lint --fix",
     "lint:check": "next lint",
+    "prepare": "husky",
     "start": "next start",
-    "typecheck": "tsc --noEmit",
-    "prepare": "husky"
+    "static-analysis": "prettier --check . && next lint && tsc --noEmit",
+    "type-check": "tsc --noEmit"
   },
   "dependencies": {
     "@radix-ui/react-navigation-menu": "^1.2.5",
