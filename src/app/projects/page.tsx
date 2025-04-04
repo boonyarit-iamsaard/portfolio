@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function ProjectsPage() {
   return (
-    <main className="relative flex-1">
+    <div className="space-y-16">
       <PageHeader
         title="Projects"
         description="Explore the projects I've worked on."
@@ -17,6 +17,6 @@ export default function ProjectsPage() {
       <section className="container py-12">
         <p>Project details will go here...</p>
       </section>
-    </main>
+    </div>
   );
 }

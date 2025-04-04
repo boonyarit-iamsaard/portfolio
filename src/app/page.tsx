@@ -23,8 +23,7 @@ export default function Home() {
   }));
 
   return (
-    <main className="relative flex-1 space-y-16">
-      {/* Hero Section */}
+    <div className="space-y-16">
       <section className="bg-muted/50 flex flex-col items-center justify-center px-4 py-16">
         <div className="h-16" />
         <div className="flex min-h-[50vh] max-w-2xl flex-col items-center justify-center gap-6 text-center">
@@ -51,7 +50,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Tech Stack Section */}
       <section>
         <div className="container space-y-6">
           <h2 className="sr-only">Tech Stack</h2>
@@ -68,7 +66,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Projects Section */}
       <section className="bg-muted/50 py-16">
         <div className="container space-y-8">
           <div className="flex items-center justify-between">
@@ -94,7 +91,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Articles Section */}
       <section className="py-16">
         <div className="container space-y-8">
           <div className="flex items-center justify-between">
@@ -122,7 +118,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Final CTA Section */}
       <section className="bg-muted/50 py-24">
         <div className="container">
           <div className="mx-auto max-w-2xl space-y-6 text-center">
@@ -138,6 +133,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-    </main>
+    </div>
   );
 }
