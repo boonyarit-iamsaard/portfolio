@@ -1,8 +1,13 @@
+import Link from 'next/link';
+
 import { Construction, ImageIcon } from 'lucide-react';
 
 import { Button } from '@/common/components/ui/button';
+import { formatDate } from '@/common/helpers/date';
 
-export default function Home() {
+import { articles, projects } from '@/velite';
+
+export default function Page() {
   const tools = [
     'JavaScript',
     'TypeScript',
@@ -11,16 +16,9 @@ export default function Home() {
     'Node.js',
     'SQL',
   ];
-  const projects = Array.from({ length: 4 }, (_, i) => ({
-    id: `project-${i + 1}`,
-    title: `Project ${i + 1}`,
-    description: `Project ${i + 1} description`,
-  }));
-  const articles = Array.from({ length: 6 }, (_, i) => ({
-    id: `article-${i + 1}`,
-    title: `Article ${i + 1}`,
-    description: `Article ${i + 1} description`,
-  }));
+
+  const latestArticles = articles.slice(0, 4);
+  const latestProjects = projects.slice(0, 4);
 
   return (
     <div className="space-y-16">
@@ -70,20 +68,31 @@ export default function Home() {
         <div className="container space-y-8">
           <div className="flex items-center justify-between">
             <h2 className="text-3xl font-bold tracking-tight">Projects</h2>
-            <Button variant="link">View all</Button>
+            <Button variant="link" asChild>
+              <Link href="/projects">View all</Link>
+            </Button>
           </div>
           <div className="grid gap-8 md:grid-cols-2">
-            {projects.map((project) => (
+            {latestProjects.map((project) => (
               <div
-                key={project.id}
+                key={project.slug}
                 className="group bg-card hover:ring-muted-foreground overflow-hidden rounded-xl border transition-all hover:ring-2"
               >
                 <div className="bg-muted flex aspect-video items-center justify-center transition-opacity group-hover:opacity-80">
                   <ImageIcon className="text-muted-foreground size-12" />
                 </div>
                 <div className="space-y-4 p-6">
-                  <h3 className="text-xl font-semibold">{project.title}</h3>
-                  <p className="text-muted-foreground">{project.description}</p>
+                  <h3 className="text-xl font-semibold">
+                    <Link
+                      href={project.permalink}
+                      className="hover:text-primary"
+                    >
+                      {project.title}
+                    </Link>
+                  </h3>
+                  <time className="text-muted-foreground text-sm">
+                    {formatDate(project.date)}
+                  </time>
                 </div>
               </div>
             ))}
@@ -95,22 +104,31 @@ export default function Home() {
         <div className="container space-y-8">
           <div className="flex items-center justify-between">
             <h2 className="text-3xl font-bold tracking-tight">Articles</h2>
-            <Button variant="link">View all</Button>
+            <Button variant="link" asChild>
+              <Link href="/articles">View all</Link>
+            </Button>
           </div>
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {articles.map((article) => (
+          <div className="grid gap-8 md:grid-cols-2">
+            {latestArticles.map((article) => (
               <div
-                key={article.id}
+                key={article.slug}
                 className="group bg-card hover:ring-muted-foreground overflow-hidden rounded-xl border transition-all hover:ring-2"
               >
                 <div className="bg-muted flex aspect-video items-center justify-center transition-opacity group-hover:opacity-80">
                   <ImageIcon className="text-muted-foreground size-12" />
                 </div>
                 <div className="space-y-4 p-6">
-                  <h3 className="group-hover:text-primary text-xl font-semibold transition-colors">
-                    {article.title}
+                  <h3 className="text-xl font-semibold">
+                    <Link
+                      href={article.permalink}
+                      className="hover:text-primary"
+                    >
+                      {article.title}
+                    </Link>
                   </h3>
-                  <p className="text-muted-foreground">{article.description}</p>
+                  <time className="text-muted-foreground text-sm">
+                    {formatDate(article.date)}
+                  </time>
                 </div>
               </div>
             ))}
