@@ -5,6 +5,7 @@ import type { ReactNode } from 'react';
 
 import { fontSans } from '@/core/styles/fonts';
 import { AppLayout } from '@/common/components/layout/app-layout';
+import { TooltipProvider } from '@/common/components/ui/tooltip';
 import { cn } from '@/common/helpers/cn';
 
 export const metadata: Metadata = {
@@ -27,7 +28,9 @@ export default function RootLayout({ children }: RootLayoutProps) {
         )}
       >
         <div className="bg-background relative flex min-h-svh flex-col">
-          <AppLayout>{children}</AppLayout>
+          <TooltipProvider>
+            <AppLayout>{children}</AppLayout>
+          </TooltipProvider>
         </div>
       </body>
     </html>

@@ -4,6 +4,7 @@ import { Construction, ImageIcon } from 'lucide-react';
 
 import { Button } from '@/common/components/ui/button';
 import { formatDate } from '@/common/helpers/date';
+import { ProjectCard } from '@/features/projects/components/project-card';
 
 import { articles, projects } from '@/velite';
 
@@ -22,6 +23,7 @@ export default function Page() {
 
   return (
     <div className="space-y-16">
+      {/* Hero */}
       <section className="bg-muted/50 flex flex-col items-center justify-center px-4 py-16">
         <div className="h-16" />
         <div className="flex min-h-[50vh] max-w-2xl flex-col items-center justify-center gap-6 text-center">
@@ -48,58 +50,22 @@ export default function Page() {
         </div>
       </section>
 
-      <section>
-        <div className="container space-y-6">
-          <h2 className="sr-only">Tech Stack</h2>
-          <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-6">
-            {tools.map((tool) => (
-              <div
-                key={tool}
-                className="bg-muted hover:bg-muted/80 flex aspect-video items-center justify-center rounded-lg font-medium transition-all hover:scale-105"
-              >
-                {tool}
-              </div>
-            ))}
-          </div>
+      {/* Projects */}
+      <section className="container space-y-8">
+        <div className="flex items-center justify-between">
+          <h2 className="text-4xl font-bold tracking-tight">Projects</h2>
+          <Button variant="link" asChild>
+            <Link href="/projects">View all</Link>
+          </Button>
+        </div>
+        <div className="grid gap-4 md:grid-cols-2 md:grid-rows-2">
+          {latestProjects.map((project) => (
+            <ProjectCard key={project.slug} project={project} />
+          ))}
         </div>
       </section>
 
-      <section className="bg-muted/50 py-16">
-        <div className="container space-y-8">
-          <div className="flex items-center justify-between">
-            <h2 className="text-3xl font-bold tracking-tight">Projects</h2>
-            <Button variant="link" asChild>
-              <Link href="/projects">View all</Link>
-            </Button>
-          </div>
-          <div className="grid gap-8 md:grid-cols-2">
-            {latestProjects.map((project) => (
-              <div
-                key={project.slug}
-                className="group bg-card hover:ring-muted-foreground overflow-hidden rounded-xl border transition-all hover:ring-2"
-              >
-                <div className="bg-muted flex aspect-video items-center justify-center transition-opacity group-hover:opacity-80">
-                  <ImageIcon className="text-muted-foreground size-12" />
-                </div>
-                <div className="space-y-4 p-6">
-                  <h3 className="text-xl font-semibold">
-                    <Link
-                      href={project.permalink}
-                      className="hover:text-primary"
-                    >
-                      {project.title}
-                    </Link>
-                  </h3>
-                  <time className="text-muted-foreground text-sm">
-                    {formatDate(project.date)}
-                  </time>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
+      {/* Articles */}
       <section className="py-16">
         <div className="container space-y-8">
           <div className="flex items-center justify-between">
@@ -136,6 +102,24 @@ export default function Page() {
         </div>
       </section>
 
+      {/* Tech Stack */}
+      <section>
+        <div className="container space-y-6">
+          <h2 className="sr-only">Tech Stack</h2>
+          <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-6">
+            {tools.map((tool) => (
+              <div
+                key={tool}
+                className="bg-muted hover:bg-muted/80 flex aspect-video items-center justify-center rounded-lg font-medium transition-all hover:scale-105"
+              >
+                {tool}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Final CTA */}
       <section className="bg-muted/50 py-24">
         <div className="container">
           <div className="mx-auto max-w-2xl space-y-6 text-center">
