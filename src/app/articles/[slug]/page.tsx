@@ -24,7 +24,7 @@ export default async function Page({ params }: PageProps) {
   return (
     <div className="space-y-16">
       <PageHeader title={article.title} />
-      <section className="container py-12">
+      <section className="container">
         <MDX content={article.content} />
       </section>
     </div>
