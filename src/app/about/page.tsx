@@ -1,6 +1,9 @@
 import type { Metadata } from 'next';
 
+import { MDX } from '@/common/components/mdx';
 import { PageHeader } from '@/common/components/page-header';
+
+import { about } from '@/velite';
 
 export const metadata: Metadata = {
   title: 'About - Boonyarit I.',
@@ -10,12 +13,9 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <div className="space-y-16">
-      <PageHeader
-        title="About Me"
-        description="Discover my background, skills, and passion for development."
-      />
-      <section className="container py-12">
-        <p>More details about me will go here...</p>
+      <PageHeader title={about.title} description={about.description} />
+      <section className="container">
+        <MDX content={about.content} />
       </section>
     </div>
   );
