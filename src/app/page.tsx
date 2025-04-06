@@ -1,9 +1,9 @@
 import Link from 'next/link';
 
-import { Construction, ImageIcon } from 'lucide-react';
+import { Construction } from 'lucide-react';
 
 import { Button } from '@/common/components/ui/button';
-import { formatDate } from '@/common/helpers/date';
+import { ArticleCard } from '@/features/articles/components/article-card';
 import { ProjectCard } from '@/features/projects/components/project-card';
 
 import { articles, projects } from '@/velite';
@@ -22,7 +22,7 @@ export default function Page() {
   const latestProjects = projects.slice(0, 4);
 
   return (
-    <div className="space-y-16">
+    <div className="space-y-16 md:space-y-24">
       {/* Hero */}
       <section className="bg-muted/50 flex flex-col items-center justify-center px-4 py-16">
         <div className="h-16" />
@@ -52,13 +52,19 @@ export default function Page() {
 
       {/* Projects */}
       <section className="container space-y-8">
-        <div className="flex items-center justify-between">
-          <h2 className="text-4xl font-bold tracking-tight">Projects</h2>
-          <Button variant="link" asChild>
-            <Link href="/projects">View all</Link>
-          </Button>
+        <div className="space-y-2">
+          <div className="flex items-center justify-between">
+            <h2 className="text-4xl font-bold tracking-tight">Projects</h2>
+            <Button variant="link" asChild>
+              <Link href="/projects">View all</Link>
+            </Button>
+          </div>
+          <p className="text-muted-foreground">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+            Repudiandae ab molestias expedita.
+          </p>
         </div>
-        <div className="grid gap-4 md:grid-cols-2 md:grid-rows-2">
+        <div className="grid gap-4 md:grid-cols-2">
           {latestProjects.map((project) => (
             <ProjectCard key={project.slug} project={project} />
           ))}
@@ -66,46 +72,38 @@ export default function Page() {
       </section>
 
       {/* Articles */}
-      <section className="py-16">
-        <div className="container space-y-8">
+      <section className="container space-y-8">
+        <div className="space-y-2">
           <div className="flex items-center justify-between">
-            <h2 className="text-3xl font-bold tracking-tight">Articles</h2>
+            <h2 className="text-4xl font-bold tracking-tight">
+              Latest Articles
+            </h2>
             <Button variant="link" asChild>
               <Link href="/articles">View all</Link>
             </Button>
           </div>
-          <div className="grid gap-8 md:grid-cols-2">
-            {latestArticles.map((article) => (
-              <div
-                key={article.slug}
-                className="group bg-card hover:ring-muted-foreground overflow-hidden rounded-xl border transition-all hover:ring-2"
-              >
-                <div className="bg-muted flex aspect-video items-center justify-center transition-opacity group-hover:opacity-80">
-                  <ImageIcon className="text-muted-foreground size-12" />
-                </div>
-                <div className="space-y-4 p-6">
-                  <h3 className="text-xl font-semibold">
-                    <Link
-                      href={article.permalink}
-                      className="hover:text-primary"
-                    >
-                      {article.title}
-                    </Link>
-                  </h3>
-                  <time className="text-muted-foreground text-sm">
-                    {formatDate(article.date)}
-                  </time>
-                </div>
-              </div>
-            ))}
-          </div>
+          <p className="text-muted-foreground">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+            Repudiandae ab molestias expedita.
+          </p>
+        </div>
+        <div className="grid gap-4">
+          {latestArticles.map((article) => (
+            <ArticleCard key={article.slug} article={article} />
+          ))}
         </div>
       </section>
 
       {/* Tech Stack */}
       <section>
-        <div className="container space-y-6">
-          <h2 className="sr-only">Tech Stack</h2>
+        <div className="container space-y-8">
+          <div className="space-y-2">
+            <h2 className="text-4xl font-bold tracking-tight">Tools</h2>
+            <p className="text-muted-foreground">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+              Repudiandae ab molestias expedita.
+            </p>
+          </div>
           <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-6">
             {tools.map((tool) => (
               <div
