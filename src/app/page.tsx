@@ -1,7 +1,6 @@
-import Link from 'next/link';
-
 import { Construction } from 'lucide-react';
 
+import { SectionHeader } from '@/common/components/section-header';
 import { Button } from '@/common/components/ui/button';
 import { ArticleCard } from '@/features/articles/components/article-card';
 import { ProjectCard } from '@/features/projects/components/project-card';
@@ -52,18 +51,7 @@ export default function Page() {
 
       {/* Projects */}
       <section className="container space-y-8">
-        <div className="space-y-2">
-          <div className="flex items-center justify-between">
-            <h2 className="text-4xl font-bold tracking-tight">Projects</h2>
-            <Button variant="link" asChild>
-              <Link href="/projects">View all</Link>
-            </Button>
-          </div>
-          <p className="text-muted-foreground">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-            Repudiandae ab molestias expedita.
-          </p>
-        </div>
+        <SectionHeader title="Projects" viewAllLink="/projects" />
         <div className="grid gap-4 md:grid-cols-2">
           {latestProjects.map((project) => (
             <ProjectCard key={project.slug} project={project} />
@@ -73,20 +61,7 @@ export default function Page() {
 
       {/* Articles */}
       <section className="container space-y-8">
-        <div className="space-y-2">
-          <div className="flex items-center justify-between">
-            <h2 className="text-4xl font-bold tracking-tight">
-              Latest Articles
-            </h2>
-            <Button variant="link" asChild>
-              <Link href="/articles">View all</Link>
-            </Button>
-          </div>
-          <p className="text-muted-foreground">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-            Repudiandae ab molestias expedita.
-          </p>
-        </div>
+        <SectionHeader title="Latest Articles" viewAllLink="/articles" />
         <div className="grid gap-4">
           {latestArticles.map((article) => (
             <ArticleCard key={article.slug} article={article} />
@@ -97,13 +72,7 @@ export default function Page() {
       {/* Tech Stack */}
       <section>
         <div className="container space-y-8">
-          <div className="space-y-2">
-            <h2 className="text-4xl font-bold tracking-tight">Tools</h2>
-            <p className="text-muted-foreground">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-              Repudiandae ab molestias expedita.
-            </p>
-          </div>
+          <SectionHeader title="Tools" />
           <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-6">
             {tools.map((tool) => (
               <div
