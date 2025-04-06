@@ -1,5 +1,3 @@
-import { Construction } from 'lucide-react';
-
 import { SectionHeader } from '@/common/components/section-header';
 import { Button } from '@/common/components/ui/button';
 import { ArticleCard } from '@/features/articles/components/article-card';
@@ -26,9 +24,8 @@ export default function Page() {
       <section className="bg-muted/50 flex flex-col items-center justify-center px-4 py-16">
         <div className="h-16" />
         <div className="flex min-h-[50vh] max-w-2xl flex-col items-center justify-center gap-6 text-center">
-          <span className="text-foreground bg-primary/10 border-primary/20 flex items-center gap-2 rounded-full border px-3 py-1.5 text-sm font-medium">
-            <Construction className="text-primary size-4" />
-            This site is working in progress
+          <span className="text-foreground flex items-center gap-2 rounded-full border border-amber-200 bg-amber-200/20 px-3 py-1.5 text-sm font-medium">
+            🚧 This site is working in progress
           </span>
           <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
             Hi, I&apos;m Boonyarit
