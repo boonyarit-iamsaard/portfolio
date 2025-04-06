@@ -26,9 +26,9 @@ export default function Page() {
       <section className="bg-muted/50 flex flex-col items-center justify-center px-4 py-16">
         <div className="h-16" />
         <div className="flex min-h-[50vh] max-w-2xl flex-col items-center justify-center gap-6 text-center">
-          <span className="text-muted-foreground/80 bg-muted/80 flex animate-pulse items-center gap-1.5 rounded-full px-2 py-1 text-xs">
-            <Construction className="text-primary h-3.5 w-3.5" />
-            This site is work in progress
+          <span className="text-foreground bg-primary/10 border-primary/20 flex items-center gap-2 rounded-full border px-3 py-1.5 text-sm font-medium">
+            <Construction className="text-primary size-4" />
+            This site is working in progress
           </span>
           <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
             Hi, I&apos;m Boonyarit
