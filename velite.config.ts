@@ -6,6 +6,7 @@ const articles = defineCollection({
   schema: s
     .object({
       title: s.string().max(100),
+      description: s.string().max(255),
       slug: s.slug('article'),
       date: s.isodate(),
       metadata: s.metadata(),
