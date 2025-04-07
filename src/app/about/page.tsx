@@ -1,7 +1,9 @@
 import type { Metadata } from 'next';
 
+import Image from 'next/image';
+
+import profile from '@/core/assets/images/profile.png';
 import { MDX } from '@/common/components/mdx';
-import { PageHeader } from '@/common/components/page-header';
 
 import { about } from '@/velite';
 
@@ -13,8 +15,27 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <div className="space-y-16">
-      <PageHeader title={about.title} description={about.description} />
-      <section className="container">
+      <section className="bg-muted/50">
+        <div className="h-16" />
+        <div className="container-content flex min-h-[35vh] flex-col items-center justify-center gap-4 text-center">
+          <div className="relative size-24 md:size-32">
+            <Image
+              src={profile}
+              alt="Boonyarit Iamsa-ard"
+              fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+              className="ring-background rounded-full object-cover ring-2"
+            />
+          </div>
+          <h1 className="text-2xl font-bold tracking-tight md:text-4xl">
+            Boonyarit Iamsa-ard
+          </h1>
+          <p className="text-muted-foreground text-lg font-medium italic">
+            Full Stack Developer
+          </p>
+        </div>
+      </section>
+      <section className="container pb-16">
         <MDX content={about.content} />
       </section>
     </div>
