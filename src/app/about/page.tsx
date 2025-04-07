@@ -26,7 +26,9 @@ export default function AboutPage() {
               src={profile}
               alt="Boonyarit Iamsa-ard"
               fill
-              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+              quality={95}
+              priority
+              sizes="(max-width: 768px) 96px, 128px"
               className="ring-background rounded-full object-cover ring-2"
             />
           </div>
