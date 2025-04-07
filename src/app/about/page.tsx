@@ -2,8 +2,11 @@ import type { Metadata } from 'next';
 
 import Image from 'next/image';
 
+import { Download } from 'lucide-react';
+
 import profile from '@/core/assets/images/profile.png';
 import { MDX } from '@/common/components/mdx';
+import { Button } from '@/common/components/ui/button';
 
 import { about } from '@/velite';
 
@@ -33,6 +36,12 @@ export default function AboutPage() {
           <p className="text-muted-foreground text-lg font-medium italic">
             Full Stack Developer
           </p>
+          <Button asChild className="gap-2">
+            <a href="/assets/boonyarit-iamsaard-2025-02-16.pdf" download>
+              <Download className="size-4" />
+              Resume
+            </a>
+          </Button>
         </div>
       </section>
       <section className="container pb-16">
