@@ -6,7 +6,6 @@ import { usePathname, useRouter } from 'next/navigation';
 
 import { MenuIcon, TerminalSquareIcon } from 'lucide-react';
 
-import { SocialLinks } from '@/common/components/social-links';
 import { Button } from '@/common/components/ui/button';
 import {
   Drawer,
@@ -151,10 +150,6 @@ export function AppHeader() {
         </NavigationMenu>
 
         <div className="flex flex-1 items-center justify-end gap-2">
-          <div className="hidden md:flex">
-            <SocialLinks />
-          </div>
-
           {/* Mobile Drawer */}
           <Drawer
             direction="left"
