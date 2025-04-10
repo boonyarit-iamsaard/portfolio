@@ -5,8 +5,7 @@ type PageHeaderProps = Readonly<{
 
 export function PageHeader({ title, description }: PageHeaderProps) {
   return (
-    <section className="bg-muted/50">
-      <div className="h-16" />
+    <section className="bg-muted/50 pt-16">
       <div className="container flex min-h-[35vh] flex-col items-center justify-center gap-4 text-center">
         {title ? (
           <h1 className="text-2xl font-bold tracking-tight md:text-4xl">

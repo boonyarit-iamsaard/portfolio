@@ -1,3 +1,4 @@
+import rehypeShiki from '@shikijs/rehype';
 import { defineCollection, defineConfig, s } from 'velite';
 
 const tagSchema = s
@@ -66,5 +67,15 @@ export default defineConfig({
     about,
     articles,
     projects,
+  },
+  mdx: {
+    rehypePlugins: [
+      [
+        rehypeShiki as any, // eslint-disable-line @typescript-eslint/no-explicit-any
+        {
+          theme: 'catppuccin-mocha',
+        },
+      ],
+    ],
   },
 });

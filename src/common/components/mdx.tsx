@@ -33,10 +33,7 @@ const sharedComponents: MDXComponents = {
     />
   ),
   p: ({ className, ...props }: ComponentProps<'p'>) => (
-    <p
-      className={cn('text-muted-foreground mb-4 leading-7', className)}
-      {...props}
-    />
+    <p className={cn('', className)} {...props} />
   ),
   a: ({ className, ...props }: ComponentProps<'a'>) => (
     <a
@@ -60,7 +57,7 @@ const sharedComponents: MDXComponents = {
     />
   ),
   li: ({ className, ...props }: ComponentProps<'li'>) => (
-    <li className={cn('text-muted-foreground', className)} {...props} />
+    <li className={cn('', className)} {...props} />
   ),
   blockquote: ({ className, ...props }: ComponentProps<'blockquote'>) => (
     <blockquote
@@ -74,7 +71,7 @@ const sharedComponents: MDXComponents = {
   code: ({ className, ...props }: ComponentProps<'code'>) => (
     <code
       className={cn(
-        'bg-muted relative rounded px-[0.3rem] py-[0.2rem] font-mono text-sm',
+        'not-[pre>code]:bg-secondary not-[pre>code]:text-secondary-foreground relative rounded font-mono not-[pre>code]:px-1 not-[pre>code]:py-0.5 not-[pre>code]:transition-colors not-[pre>code]:duration-500',
         className,
       )}
       {...props}
@@ -82,10 +79,7 @@ const sharedComponents: MDXComponents = {
   ),
   pre: ({ className, ...props }: ComponentProps<'pre'>) => (
     <pre
-      className={cn(
-        'bg-muted mt-6 mb-4 overflow-x-auto rounded-lg border p-4 font-mono text-sm',
-        className,
-      )}
+      className={cn('my-4 overflow-x-auto rounded-lg p-4 font-mono', className)}
       {...props}
     />
   ),

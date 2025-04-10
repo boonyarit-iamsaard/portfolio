@@ -1,118 +1,112 @@
 ---
 title: Node.js Import Style Guide
-description: A guide to the different import styles in Node.js built-in modules.
+description: A practical guide to the different ways you can import built-in modules in Node.js — and why the way you import matters.
 tags: ['node']
 slug: node-import-style-guide
-date: 2025-04-05 13:22
+date: 2025-04-11 13:00
 ---
 
-## Import Variations in Node.js Built-in Modules
+> A practical guide to the different ways you can import built-in modules in Node.js — and why the way you import matters.
 
-### Basic Import: `import module from 'module'`
+## 📝 TL;DR
 
-- Imports entire module as default import
-- Requires `"type": "module"` in package.json
-- Usage: `module.method()`
-- Example:
+- Use `import { method } from 'node:module'` for clarity, performance, and future-proofing.
+- The `node:` prefix makes it clear you’re importing a built-in module (not an npm package).
+- Named imports help with tree-shaking and reduce bundle size.
+- Avoid default imports like `import fs from 'fs'` unless you really need the whole module.
+- Works best in Node.js 16+.
 
-  ```javascript
-  import path from 'path';
+## 🧱 Import Variations in Node.js Built-in Modules
 
-  path.join();
-  ```
+### Basic Import
 
-### Named Import: `import { method } from 'module'`
+```js
+import path from 'path';
 
-- Named import that only imports specific functions
-- More tree-shakable as you're only importing what you need
-- Usage: Direct function calls
-- Potentially smaller bundle size in production
-- Example:
+path.join();
+```
 
-  ```javascript
-  import { readFile } from 'fs';
+- Entire module as default export.
+- Requires `"type": "module"` in `package.json`.
+- Less tree-shakable.
 
-  readFile();
-  ```
+### Named Import
 
-### Node Protocol: `import module from 'node:module'`
+```js
+import { readFile } from 'fs';
 
-- Uses the `node:` protocol prefix
-- Explicitly indicates this is a Node.js built-in module
-- Helps avoid confusion with similarly named third-party modules
-- Better performance as Node knows it's a built-in module
-- Example:
+readFile();
+```
 
-  ```javascript
-  import fs from 'node:fs';
+- Only imports what you need.
+- More efficient and readable.
 
-  fs.readFile();
-  ```
+### Node Protocol Import
 
-### Modern Approach: `import { method } from 'node:module'`
+```js
+import fs from 'node:fs';
 
-- Combines the benefits of named imports and the node: protocol
-- Most modern and recommended approach
-- Explicit about both the source and the specific function needed
-- Best for tree-shaking and clarity
-- Example:
+fs.readFile();
+```
 
-  ```javascript
-  import { readFile } from 'node:fs/promises';
-  import { join } from 'node:path';
-  ```
+- Explicitly tells Node you're using a built-in.
+- Avoids confusion and improves performance.
 
-## Common Module Examples
+### Modern Approach (Named + node:) ✅
 
-### File System (fs)
+```js
+import { readFile } from 'node:fs/promises';
+import { join } from 'node:path';
+```
 
-```javascript
-// Promise-based operations
+- Best practice.
+- Combines tree-shaking, clarity, and Node-specific context.
 
-// Synchronous operations
+## 📦 Common Module Examples
+
+### File System
+
+```js
 import { readFileSync, writeFileSync } from 'node:fs';
 import { readFile, writeFile } from 'node:fs/promises';
 ```
 
-### Path Module
+### Path
 
-```javascript
+```js
 import { dirname, join, resolve } from 'node:path';
 ```
 
-### URL Module
+### URL
 
-```javascript
+```js
 import { fileURLToPath } from 'node:url';
 ```
 
 ### Utils
 
-```javascript
+```js
 import { promisify } from 'node:util';
 ```
 
-## Best Practices
+## ✅ Best Practices
 
-### Recommended Approach
+### Use this:
 
-```javascript
+```js
 import { method } from 'node:module';
 ```
 
-### Why?
+### Because:
 
-- `node:` prefix is preferred since Node.js 16.0.0
-- Named imports enable better tree-shaking
-- Makes dependencies explicit
-- Clearer intent in code
-- Better IDE support and autocompletion
-- Faster module resolution
-- Future-proof approach
+- `node:` is more explicit and recommended since Node.js v16
+- Named imports = better performance and DX
+- Clearer to humans and machines
+- Helps IDEs help _you_
+- Makes your imports cleaner and easier to refactor
 
-### Special Notes
+## 🧠 Final Thoughts
 
-- Use `fs/promises` for Promise-based async operations
-- Use `fs` for synchronous operations (use sparingly)
-- Consider adding ESLint rules to enforce these patterns
-- Compatible with Node.js 16.0.0 and above
+Modern JavaScript in Node.js deserves modern import patterns. Use the `node:` protocol and named imports to keep your codebase sharp, lean, and future-proof.
+
+Let your imports tell a clear story. Happy coding!
