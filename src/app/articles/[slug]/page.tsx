@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation';
 
 import { MDX } from '@/common/components/mdx';
 import { PageHeader } from '@/common/components/page-header';
+import { ArticleHeader } from '@/features/articles/components/article-header';
 
 import { articles } from '@/velite';
 
@@ -23,8 +24,9 @@ export default async function Page({ params }: PageProps) {
 
   return (
     <div className="space-y-16">
-      <PageHeader title={article.title} />
-      <section className="container">
+      <PageHeader />
+      <section className="container pb-16">
+        <ArticleHeader article={article} />
         <MDX content={article.content} />
       </section>
     </div>

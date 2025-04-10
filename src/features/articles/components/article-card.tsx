@@ -2,6 +2,7 @@ import Link from 'next/link';
 
 import { ImageIcon } from 'lucide-react';
 
+import { Tag } from '@/common/components/tag';
 import { Button } from '@/common/components/ui/button';
 import { formatDate } from '@/common/helpers/date';
 
@@ -28,7 +29,12 @@ export function ArticleCard({ article }: ArticleCardProps) {
             {formatDate(article.date)}
           </time>
         </div>
-        <p className="text-muted-foreground text-sm">{article.description}</p>
+        <p className="text-muted-foreground">{article.description}</p>
+        <div className="flex flex-wrap">
+          {article.tags.map((tag) => (
+            <Tag key={tag} tag={tag} />
+          ))}
+        </div>
         <div className="flex items-center justify-end">
           <Button variant="link" asChild>
             <Link href={article.permalink}>Read more</Link>

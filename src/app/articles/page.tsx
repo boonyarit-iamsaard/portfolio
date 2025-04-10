@@ -11,6 +11,10 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
+  const sortedArticles = articles.sort(
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
+  );
+
   // TODO: add pagination
   return (
     <div className="space-y-16">
@@ -19,7 +23,7 @@ export default function Page() {
         description="Insights, tutorials, and thoughts on web development."
       />
       <section className="container grid gap-4 pb-16">
-        {articles.map((article) => (
+        {sortedArticles.map((article) => (
           <ArticleCard key={article.slug} article={article} />
         ))}
       </section>

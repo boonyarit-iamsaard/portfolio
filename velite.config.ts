@@ -1,5 +1,10 @@
 import { defineCollection, defineConfig, s } from 'velite';
 
+const tagSchema = s
+  .string()
+  .toLowerCase()
+  .transform((tag) => tag.replace(/\s/g, ''));
+
 const about = defineCollection({
   name: 'About',
   single: true,
@@ -27,6 +32,7 @@ const articles = defineCollection({
       title: s.string().max(100),
       description: s.string().max(255),
       slug: s.slug('article'),
+      tags: s.array(tagSchema),
       date: s.isodate(),
       metadata: s.metadata(),
       content: s.mdx(),
