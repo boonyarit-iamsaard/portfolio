@@ -3,7 +3,7 @@ import '@/core/styles/globals.css';
 import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
 
-import { fontSans } from '@/core/styles/fonts';
+import { fontMono, fontSans } from '@/core/styles/fonts';
 import { AppLayout } from '@/common/components/layout/app-layout';
 import { TooltipProvider } from '@/common/components/ui/tooltip';
 import { cn } from '@/common/helpers/cn';
@@ -25,6 +25,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         className={cn(
           'bg-background min-h-svh font-sans antialiased',
           fontSans.variable,
+          fontMono.variable,
         )}
       >
         <div className="bg-background relative flex min-h-svh flex-col">

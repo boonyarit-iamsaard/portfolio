@@ -74,7 +74,7 @@ const sharedComponents: MDXComponents = {
   code: ({ className, ...props }: ComponentProps<'code'>) => (
     <code
       className={cn(
-        'bg-muted relative rounded px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold',
+        'bg-muted relative rounded px-[0.3rem] py-[0.2rem] font-mono text-sm',
         className,
       )}
       {...props}
@@ -83,7 +83,7 @@ const sharedComponents: MDXComponents = {
   pre: ({ className, ...props }: ComponentProps<'pre'>) => (
     <pre
       className={cn(
-        'bg-muted mt-6 mb-4 overflow-x-auto rounded-lg border p-4',
+        'bg-muted mt-6 mb-4 overflow-x-auto rounded-lg border p-4 font-mono text-sm',
         className,
       )}
       {...props}
