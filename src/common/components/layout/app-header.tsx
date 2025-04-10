@@ -56,6 +56,7 @@ function getHeaderClasses(
 }
 
 // TODO: this component is getting too complex, break it down and ensure its performance is optimal
+// TODO: re-consider debounce, transition, and animation timing
 export function AppHeader() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -75,7 +76,7 @@ export function AppHeader() {
     setIsDrawerOpen(false);
     setTimeout(() => {
       setShouldRenderDrawer(false);
-    }, 500);
+    }, 50);
   };
 
   useEffect(() => {
@@ -86,7 +87,7 @@ export function AppHeader() {
   }, [pathname]);
 
   useEffect(() => {
-    const threshold = 64;
+    const threshold = 16;
     let scrollTimeout: number | null = null;
 
     const handleScroll = () => {
@@ -118,7 +119,7 @@ export function AppHeader() {
   return (
     <header
       className={cn(
-        'fixed top-0 z-10 w-full transition-colors duration-300 ease-in-out',
+        'fixed top-0 z-10 w-full transition-colors duration-100 ease-in-out',
         getHeaderClasses(shouldRenderDrawer, isScrolled, isMounted),
       )}
     >

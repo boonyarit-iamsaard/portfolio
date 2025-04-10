@@ -3,6 +3,7 @@ import type { ComponentProps, ComponentType } from 'react';
 
 import { useMemo } from 'react';
 import * as runtime from 'react/jsx-runtime';
+import Image from 'next/image';
 
 import { runSync } from '@mdx-js/mdx';
 
@@ -33,7 +34,7 @@ const sharedComponents: MDXComponents = {
     />
   ),
   p: ({ className, ...props }: ComponentProps<'p'>) => (
-    <p className={cn('', className)} {...props} />
+    <p className={cn('my-4', className)} {...props} />
   ),
   a: ({ className, ...props }: ComponentProps<'a'>) => (
     <a
@@ -83,6 +84,7 @@ const sharedComponents: MDXComponents = {
       {...props}
     />
   ),
+  Image,
 };
 
 function useMDXComponent(content: string): MDXContent {

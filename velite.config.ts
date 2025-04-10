@@ -32,6 +32,8 @@ const articles = defineCollection({
     .object({
       title: s.string().max(100),
       description: s.string().max(255),
+      cover: s.image(),
+      thumbnail: s.image().optional(),
       slug: s.slug('article'),
       tags: s.array(tagSchema),
       date: s.isodate(),
@@ -63,6 +65,14 @@ const projects = defineCollection({
 });
 
 export default defineConfig({
+  root: 'content',
+  output: {
+    data: '.velite',
+    assets: 'public/static',
+    base: '/static/',
+    name: '[name]-[hash:6].[ext]',
+    clean: true,
+  },
   collections: {
     about,
     articles,
@@ -73,7 +83,7 @@ export default defineConfig({
       [
         rehypeShiki as any, // eslint-disable-line @typescript-eslint/no-explicit-any
         {
-          theme: 'catppuccin-mocha',
+          theme: 'dracula',
         },
       ],
     ],
