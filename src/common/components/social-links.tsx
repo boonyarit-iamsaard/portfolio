@@ -7,7 +7,7 @@ import type { IconComponent } from '@/common/components/icons';
 
 type SocialLink = {
   href: string;
-  icon: keyof typeof Icons | IconComponent;
+  icon: IconComponent;
 };
 
 const socialLinks: SocialLink[] = [

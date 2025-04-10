@@ -8,23 +8,23 @@ import { Button } from '@/common/components/ui/button';
 export function HeroSection() {
   return (
     <section className="bg-muted/50 space-y-8 py-16">
-      <div className="container grid grid-cols-1 gap-4 py-16 md:grid-cols-2">
-        <div className="flex flex-col items-center space-y-4 text-center md:items-start md:text-start">
+      <div className="container grid grid-cols-1 gap-4 py-16 lg:grid-cols-2">
+        <div className="flex flex-col items-center space-y-4 text-center lg:items-start lg:text-start">
           <div className="space-y-1">
             <p className="text-muted-foreground text-lg font-semibold">
               Hi, I&apos;m
             </p>
-            <h1 className="text-3xl font-black tracking-tight sm:text-4xl md:text-5xl">
+            <h1 className="text-3xl font-black tracking-tight sm:text-4xl lg:text-5xl">
               Boonyarit Iamsa-ard
             </h1>
-            <h2 className="text-2xl font-bold tracking-tight sm:text-3xl md:text-4xl">
+            <h2 className="text-2xl font-bold tracking-tight sm:text-3xl lg:text-4xl">
               A Full Stack Developer
             </h2>
           </div>
-          <p className="text-muted-foreground text-center text-lg md:text-start">
+          <p className="text-muted-foreground text-center text-lg lg:text-start">
             I focus on building scalable and maintainable web applications.
           </p>
-          <div className="flex flex-col items-center gap-4 pt-4 md:items-start">
+          <div className="flex flex-col items-center gap-4 pt-4 lg:items-start">
             <SocialLinks />
             <div className="grid grid-cols-2 gap-2">
               <Button size="lg" className="animate-fade-in">
@@ -39,7 +39,7 @@ export function HeroSection() {
             </div>
           </div>
         </div>
-        <div className="hidden aspect-video md:block">
+        <div className="hidden aspect-video lg:block">
           {/* Add your image component or element here */}
         </div>
       </div>
