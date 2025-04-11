@@ -131,34 +131,36 @@ export function AppHeader() {
         </Link>
 
         {/* Desktop Navigation */}
-        <NavigationMenu viewport={false} className="hidden md:flex">
-          <NavigationMenuList>
-            {navItems.map((item) => (
-              <NavigationMenuItem key={item.href}>
-                <Link href={item.href} legacyBehavior passHref>
-                  <NavigationMenuLink
-                    className={cn(
-                      navigationMenuTriggerStyle(),
-                      'bg-transparent',
-                    )}
-                  >
-                    {item.label}
-                  </NavigationMenuLink>
-                </Link>
-              </NavigationMenuItem>
-            ))}
-          </NavigationMenuList>
-        </NavigationMenu>
+        <div className="hidden items-center md:flex md:flex-1 md:justify-end">
+          <NavigationMenu viewport={false}>
+            <NavigationMenuList>
+              {navItems.map((item) => (
+                <NavigationMenuItem key={item.href}>
+                  <Link href={item.href} legacyBehavior passHref>
+                    <NavigationMenuLink
+                      className={cn(
+                        navigationMenuTriggerStyle(),
+                        'bg-transparent',
+                      )}
+                    >
+                      {item.label}
+                    </NavigationMenuLink>
+                  </Link>
+                </NavigationMenuItem>
+              ))}
+            </NavigationMenuList>
+          </NavigationMenu>
+        </div>
 
-        <div className="flex flex-1 items-center justify-end gap-2">
-          {/* Mobile Drawer */}
+        {/* Mobile Navigation */}
+        <div className="flex items-center md:hidden">
           <Drawer
             direction="left"
             open={isDrawerOpen}
             onOpenChange={handleDrawerOpenChange}
             autoFocus={isDrawerOpen}
           >
-            <DrawerTrigger asChild className="md:hidden">
+            <DrawerTrigger asChild>
               <Button variant="ghost" size="icon">
                 <MenuIcon className="h-5 w-5" />
                 <span className="sr-only">Toggle Menu</span>
