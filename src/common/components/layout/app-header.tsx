@@ -24,6 +24,8 @@ import {
 } from '@/common/components/ui/navigation-menu';
 import { cn } from '@/common/helpers/cn';
 
+import { ThemeToggle } from '../theme-toggle';
+
 const navItems = [
   { href: '/projects', label: 'Projects' },
   { href: '/articles', label: 'Articles' },
@@ -131,7 +133,7 @@ export function AppHeader() {
         </Link>
 
         {/* Desktop Navigation */}
-        <div className="hidden items-center md:flex md:flex-1 md:justify-end">
+        <div className="hidden items-center gap-2 md:flex md:flex-1 md:justify-end">
           <NavigationMenu viewport={false}>
             <NavigationMenuList>
               {navItems.map((item) => (
@@ -150,6 +152,7 @@ export function AppHeader() {
               ))}
             </NavigationMenuList>
           </NavigationMenu>
+          <ThemeToggle />
         </div>
 
         {/* Mobile Navigation */}
@@ -192,6 +195,10 @@ export function AppHeader() {
                     </Link>
                   ))}
                 </nav>
+                <div className="flex items-center border-t p-4">
+                  {/* TODO: display different theme toggle component */}
+                  <ThemeToggle />
+                </div>
               </DrawerContent>
             ) : null}
           </Drawer>

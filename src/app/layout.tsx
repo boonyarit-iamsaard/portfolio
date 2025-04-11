@@ -5,6 +5,7 @@ import type { ReactNode } from 'react';
 
 import { fontMono, fontSans } from '@/core/styles/fonts';
 import { AppLayout } from '@/common/components/layout/app-layout';
+import { ThemeProvider } from '@/common/components/theme-provider';
 import { TooltipProvider } from '@/common/components/ui/tooltip';
 import { cn } from '@/common/helpers/cn';
 
@@ -20,7 +21,7 @@ type RootLayoutProps = Readonly<{
 
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={cn(
           'bg-background text-foreground relative flex min-h-svh flex-col font-sans antialiased',
@@ -28,9 +29,16 @@ export default function RootLayout({ children }: RootLayoutProps) {
           fontMono.variable,
         )}
       >
-        <TooltipProvider>
-          <AppLayout>{children}</AppLayout>
-        </TooltipProvider>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <TooltipProvider>
+            <AppLayout>{children}</AppLayout>
+          </TooltipProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
