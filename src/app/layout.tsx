@@ -4,6 +4,7 @@ import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
 
 import { Analytics } from '@vercel/analytics/next';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 import { fontMono, fontSans } from '@/core/styles/fonts';
 import { AppLayout } from '@/common/components/layout/app-layout';
@@ -42,6 +43,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
           </TooltipProvider>
         </ThemeProvider>
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
