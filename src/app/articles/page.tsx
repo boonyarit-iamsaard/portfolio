@@ -17,12 +17,12 @@ export default function Page() {
 
   // TODO: add pagination
   return (
-    <div className="space-y-16">
+    <div className="space-y-16 py-16">
       <PageHeader
         title="Articles"
         description="Insights, tutorials, and thoughts on web development."
       />
-      <section className="container grid gap-4 pb-16">
+      <section className="container grid gap-4">
         {sortedArticles.map((article) => (
           <ArticleCard key={article.slug} article={article} />
         ))}

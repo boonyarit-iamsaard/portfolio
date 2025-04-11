@@ -7,9 +7,9 @@ import { Button } from '@/common/components/ui/button';
 // <section className="space-y-8 bg-radial-[at_25%_50%] from-slate-50 via-slate-200 to-slate-300 to-95% py-16">
 export function HeroSection() {
   return (
-    <section className="bg-muted/50 space-y-8 py-16">
+    <section data-section="hero" className="space-y-8 py-16">
       <div className="container grid grid-cols-1 gap-4 py-16 lg:grid-cols-2">
-        <div className="flex flex-col items-center space-y-4 text-center lg:items-start lg:text-start">
+        <div className="flex flex-col items-center gap-4 text-center lg:items-start lg:text-start">
           <div className="space-y-1">
             <p className="text-muted-foreground text-lg font-semibold">
               Hi, I&apos;m
@@ -21,7 +21,7 @@ export function HeroSection() {
               A Full Stack Developer
             </h2>
           </div>
-          <p className="text-muted-foreground text-center text-lg lg:text-start">
+          <p className="text-muted-foreground text-lg lg:text-start">
             I focus on building scalable and maintainable web applications.
           </p>
           <div className="flex flex-col items-center gap-4 pt-4 lg:items-start">
@@ -30,7 +30,7 @@ export function HeroSection() {
               <Button size="lg" className="animate-fade-in">
                 Contact me
               </Button>
-              <Button asChild size="lg" variant="outline">
+              <Button asChild size="lg" variant="secondary">
                 <a href="/assets/boonyarit-iamsaard-2025-02-16.pdf" download>
                   <DownloadIcon className="size-4" />
                   Resume

@@ -27,7 +27,7 @@ export function ArticleCard({ article }: ArticleCardProps) {
           className="object-cover transition-all group-hover:scale-105"
         />
       </div>
-      <div className="space-y-4 p-6 md:col-span-3">
+      <div className="space-y-4 px-6 py-4 md:col-span-3">
         <div className="flex items-center justify-between space-y-2">
           <h3 className="text-xl font-bold">
             <Link href={article.permalink} className="hover:text-primary">

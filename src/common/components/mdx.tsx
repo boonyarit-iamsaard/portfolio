@@ -17,24 +17,18 @@ type MDXProps = {
 const sharedComponents: MDXComponents = {
   h2: ({ className, ...props }: ComponentProps<'h2'>) => (
     <h2
-      className={cn(
-        'mt-6 mb-4 border-b pb-2 text-2xl font-semibold tracking-tight',
-        className,
-      )}
+      className={cn('mb-4 text-2xl font-bold tracking-tight', className)}
       {...props}
     />
   ),
   h3: ({ className, ...props }: ComponentProps<'h3'>) => (
     <h3
-      className={cn(
-        'mt-5 mb-3 text-xl font-semibold tracking-tight',
-        className,
-      )}
+      className={cn('mb-4 text-xl font-bold tracking-tight', className)}
       {...props}
     />
   ),
   p: ({ className, ...props }: ComponentProps<'p'>) => (
-    <p className={cn('my-4', className)} {...props} />
+    <p className={cn('mb-4', className)} {...props} />
   ),
   a: ({ className, ...props }: ComponentProps<'a'>) => (
     <a
@@ -72,7 +66,7 @@ const sharedComponents: MDXComponents = {
   code: ({ className, ...props }: ComponentProps<'code'>) => (
     <code
       className={cn(
-        'not-[pre>code]:bg-secondary not-[pre>code]:text-secondary-foreground relative rounded font-mono not-[pre>code]:px-1 not-[pre>code]:py-0.5 not-[pre>code]:transition-colors not-[pre>code]:duration-500',
+        'not-[pre>code]:bg-accent not-[pre>code]:text-accent-foreground relative rounded font-mono not-[pre>code]:px-1 not-[pre>code]:py-0.5 not-[pre>code]:transition-colors not-[pre>code]:duration-500',
         className,
       )}
       {...props}

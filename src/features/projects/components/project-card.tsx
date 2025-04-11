@@ -25,7 +25,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
       </div>
 
       {/* Content */}
-      <div className="space-y-4 p-6">
+      <div className="space-y-4 px-6 py-4">
         {/* Title */}
         <h3 className="text-xl font-bold">
           <Link href={project.permalink} className="hover:text-primary">

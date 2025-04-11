@@ -13,12 +13,12 @@ export const metadata: Metadata = {
 export default function Page() {
   // TODO: add pagination
   return (
-    <div className="space-y-16">
+    <div className="space-y-16 py-16">
       <PageHeader
         title="Projects"
         description="A showcase of my projects and work."
       />
-      <section className="container grid gap-4 pb-16 md:grid-cols-2">
+      <section className="container grid gap-4 md:grid-cols-2">
         {projects.map((project) => (
           <ProjectCard key={project.slug} project={project} />
         ))}
