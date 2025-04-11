@@ -34,7 +34,7 @@ export default async function Page({ params }: PageProps) {
           className="object-cover"
         />
       </div>
-      <div className="bg-muted space-y-4 rounded-b-lg px-16 py-8">
+      <div className="bg-muted space-y-4 rounded-b-lg p-4 sm:px-16 sm:py-8">
         <ArticleHeader article={article} />
         <MDX content={article.content} />
       </div>
