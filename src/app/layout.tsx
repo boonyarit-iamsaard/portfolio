@@ -3,6 +3,8 @@ import '@/core/styles/globals.css';
 import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
 
+import { Analytics } from '@vercel/analytics/next';
+
 import { fontMono, fontSans } from '@/core/styles/fonts';
 import { AppLayout } from '@/common/components/layout/app-layout';
 import { ThemeProvider } from '@/common/components/theme-provider';
@@ -39,6 +41,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
             <AppLayout>{children}</AppLayout>
           </TooltipProvider>
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   );
