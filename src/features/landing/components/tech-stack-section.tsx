@@ -65,19 +65,15 @@ export function TechStackSection() {
           return (
             <div
               key={tool.title}
-              className="border-border flex flex-col items-center justify-center gap-2 rounded-lg border p-2 font-medium transition-all hover:scale-105 md:p-4"
+              className="border-border bg-muted flex flex-col items-center justify-center gap-2 rounded-lg border p-2 font-medium transition-all hover:scale-105 md:p-4"
             >
               <div className="flex items-center justify-center">
-                <div className="bg-muted/80 flex size-16 items-center justify-center rounded-full md:size-24">
-                  <IconComponent className="size-8 md:size-12" />
-                </div>
+                <IconComponent className="size-8 md:size-12" />
               </div>
               <div className="text-muted-foreground font-medium">
                 {tool.title}
               </div>
-              <Badge variant="secondary" className="text-muted-foreground">
-                {tool.group}
-              </Badge>
+              <Badge variant="secondary">{tool.group}</Badge>
             </div>
           );
         })}
