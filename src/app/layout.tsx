@@ -23,16 +23,14 @@ export default function RootLayout({ children }: RootLayoutProps) {
     <html lang="en">
       <body
         className={cn(
-          'bg-background min-h-svh font-sans antialiased',
+          'bg-background text-foreground relative flex min-h-svh flex-col font-sans antialiased',
           fontSans.variable,
           fontMono.variable,
         )}
       >
-        <div className="bg-background relative flex min-h-svh flex-col">
-          <TooltipProvider>
-            <AppLayout>{children}</AppLayout>
-          </TooltipProvider>
-        </div>
+        <TooltipProvider>
+          <AppLayout>{children}</AppLayout>
+        </TooltipProvider>
       </body>
     </html>
   );
