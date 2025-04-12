@@ -1,4 +1,6 @@
-import { Button } from '@/common/components/ui/button';
+'use client';
+
+import { ContactForm } from './contact-form';
 
 export function CallToActionSection() {
   return (
@@ -14,7 +16,7 @@ export function CallToActionSection() {
           Let&apos;s connect and discuss your next project.
         </p>
       </div>
-      <Button size="lg">Contact me</Button>
+      <ContactForm />
     </section>
   );
 }

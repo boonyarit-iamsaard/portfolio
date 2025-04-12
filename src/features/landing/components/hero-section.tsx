@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 import { DownloadIcon } from 'lucide-react';
 
 import { SocialLinks } from '@/common/components/social-links';
@@ -27,8 +29,9 @@ export function HeroSection() {
           <div className="flex flex-col items-center gap-4 pt-4 lg:items-start">
             <SocialLinks />
             <div className="grid grid-cols-2 gap-2">
-              <Button size="lg" className="animate-fade-in">
-                Contact me
+              {/* TODO: smooth scroll to contact form */}
+              <Button asChild size="lg">
+                <Link href="#contact-form">Contact me</Link>
               </Button>
               <Button asChild size="lg" variant="secondary">
                 <a href="/assets/boonyarit-iamsaard-2025-02-16.pdf" download>
