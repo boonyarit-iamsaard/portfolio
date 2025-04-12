@@ -47,8 +47,21 @@ export function ContactForm() {
     resolver: zodResolver(contactFormSchema),
   });
 
-  function onSubmit(values: z.infer<typeof contactFormSchema>) {
-    console.log(values);
+  async function onSubmit(values: z.infer<typeof contactFormSchema>) {
+    const response = await fetch('/api/contact', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(values),
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to send message');
+    }
+
+    console.log('Response:', response);
+    form.reset();
   }
 
   return (

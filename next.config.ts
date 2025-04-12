@@ -2,6 +2,8 @@ import type { NextConfig } from 'next';
 
 import createMDX from '@next/mdx';
 
+import '@/core/configs/env.config';
+
 const isDev = process.argv.includes('dev');
 const isBuild = process.argv.includes('build');
 if (!process.env.VELITE_STARTED && (isDev || isBuild)) {
