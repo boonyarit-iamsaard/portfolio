@@ -35,7 +35,7 @@ export function ContactForm() {
                 <FormItem>
                   <FormLabel>Name</FormLabel>
                   <FormControl>
-                    <Input placeholder="John Doe" {...field} />
+                    <Input placeholder="What should I call you?" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -48,7 +48,7 @@ export function ContactForm() {
                 <FormItem>
                   <FormLabel>Email</FormLabel>
                   <FormControl>
-                    <Input placeholder="johndoe@example.com" {...field} />
+                    <Input placeholder="Your email" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>

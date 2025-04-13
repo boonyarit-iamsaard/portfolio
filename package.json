@@ -6,6 +6,7 @@
   "scripts": {
     "build": "next build",
     "dev": "next dev --turbopack",
+    "dev:email": "email dev --dir src/features/emails/templates --port 4000",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "lint": "next lint --fix",
@@ -28,6 +29,7 @@
     "@radix-ui/react-navigation-menu": "^1.2.5",
     "@radix-ui/react-slot": "^1.1.2",
     "@radix-ui/react-tooltip": "^1.1.8",
+    "@react-email/components": "^0.0.36",
     "@shikijs/rehype": "^3.2.2",
     "@t3-oss/env-nextjs": "^0.12.0",
     "@types/mdx": "^2.0.13",
@@ -68,6 +70,7 @@
     "lint-staged": "^15.5.0",
     "prettier": "^3.5.3",
     "prettier-plugin-tailwindcss": "^0.6.11",
+    "react-email": "4.0.7",
     "tailwindcss": "^4.1.1",
     "typescript": "^5.8.2",
     "velite": "^0.2.2"

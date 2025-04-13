@@ -1,8 +1,9 @@
 'use server';
 
 import { env } from '@/core/configs/env.config';
-import { createMailer } from '@/core/email';
 import { actionClient } from '@/core/safe-action';
+import { createMailer } from '@/features/emails';
+import { renderSendMessageTemplate } from '@/features/emails/templates/send-message';
 
 import { sendMessageSchema } from '../validators/send-message';
 
@@ -12,13 +13,14 @@ export const sendMessageAction = actionClient
     const { name, email, message } = parsedInput;
 
     const mailer = createMailer();
+    const html = await renderSendMessageTemplate({ email, name, message });
     try {
       await mailer.send({
         // TODO: reconsider from email format
         from: env.MAIL_FROM_ADDRESS,
         to: env.MAIL_TO_ADDRESS,
         subject: `Message from ${name}`,
-        html: `Here is the message:<br><br>${message}<br><br>from: ${email}`,
+        html,
       });
 
       return {
