@@ -38,6 +38,7 @@ jobs:
           echo "MAIL_PASSWORD=${{ secrets.MAIL_PASSWORD }}" >> .env
           echo "MAIL_FROM_NAME=${{ secrets.MAIL_FROM_NAME }}" >> .env
           echo "MAIL_FROM_ADDRESS=${{ secrets.MAIL_FROM_ADDRESS }}" >> .env
+          echo "MAIL_TO_ADDRESS=${{ secrets.MAIL_TO_ADDRESS }}" >> .env
 
       - name: Install dependencies
         run: pnpm install

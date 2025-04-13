@@ -2,7 +2,14 @@ import nodemailer from 'nodemailer';
 
 import { env } from '@/core/configs/env.config';
 
-export async function send() {
+export type SendOptions = {
+  from: string;
+  to: string;
+  subject: string;
+  html: string;
+};
+
+export function createMailer() {
   const transporter = nodemailer.createTransport({
     host: env.MAIL_HOST,
     secure: env.NODE_ENV === 'production',
@@ -13,12 +20,16 @@ export async function send() {
     },
   });
 
-  const info = await transporter.sendMail({
-    from: env.MAIL_FROM_ADDRESS,
-    to: 'contact@boonyarit.me',
-    subject: 'Test email',
-    html: '<strong>Test email</strong>',
-  });
+  async function send({ from, to, subject, html }: SendOptions) {
+    return await transporter.sendMail({
+      from,
+      to,
+      subject,
+      html,
+    });
+  }
 
-  console.log('Message sent: %s', info.messageId);
+  return {
+    send,
+  };
 }

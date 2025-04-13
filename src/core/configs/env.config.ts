@@ -10,6 +10,7 @@ export const env = createEnv({
     MAIL_PASSWORD: z.string().min(1),
     MAIL_FROM_NAME: z.string().min(1),
     MAIL_FROM_ADDRESS: z.string().min(1),
+    MAIL_TO_ADDRESS: z.string().min(1),
   },
   client: {
     //
@@ -22,5 +23,6 @@ export const env = createEnv({
     MAIL_PASSWORD: process.env.MAIL_PASSWORD,
     MAIL_FROM_NAME: process.env.MAIL_FROM_NAME,
     MAIL_FROM_ADDRESS: process.env.MAIL_FROM_ADDRESS,
+    MAIL_TO_ADDRESS: process.env.MAIL_TO_ADDRESS,
   },
 });

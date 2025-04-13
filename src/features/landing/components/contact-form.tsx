@@ -1,9 +1,5 @@
 'use client';
 
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useForm } from 'react-hook-form';
-import { z } from 'zod';
-
 import { SocialLinks } from '@/common/components/social-links';
 import { Button } from '@/common/components/ui/button';
 import { Card, CardContent, CardFooter } from '@/common/components/ui/card';
@@ -18,57 +14,16 @@ import {
 import { Input } from '@/common/components/ui/input';
 import { Textarea } from '@/common/components/ui/textarea';
 
-const contactFormSchema = z.object({
-  name: z
-    .string({
-      required_error: 'Please enter your name',
-      invalid_type_error: 'Please enter your name',
-    })
-    .nonempty('Please enter your name'),
-  email: z
-    .string({
-      required_error: 'Please enter your email',
-      invalid_type_error: 'Please enter your email',
-    })
-    .email('Please enter a valid email'),
-  message: z.string({
-    required_error: 'Please enter a message',
-    invalid_type_error: 'Please enter a message',
-  }),
-});
+import { useContactForm } from '../hooks/use-contact-form';
 
 export function ContactForm() {
-  const form = useForm<z.infer<typeof contactFormSchema>>({
-    defaultValues: {
-      name: '',
-      email: '',
-      message: '',
-    },
-    resolver: zodResolver(contactFormSchema),
-  });
-
-  async function onSubmit(values: z.infer<typeof contactFormSchema>) {
-    const response = await fetch('/api/contact', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(values),
-    });
-
-    if (!response.ok) {
-      throw new Error('Failed to send message');
-    }
-
-    console.log('Response:', response);
-    form.reset();
-  }
+  const { form, handleSubmitWithAction } = useContactForm();
 
   return (
     <Form {...form}>
       <form
         id="contact-form"
-        onSubmit={form.handleSubmit(onSubmit)}
+        onSubmit={handleSubmitWithAction}
         className="w-full max-w-lg space-y-4"
       >
         <Card>
