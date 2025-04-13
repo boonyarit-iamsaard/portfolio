@@ -26,12 +26,9 @@ export const sendMessageAction = actionClient
         message: 'Message sent successfully',
       };
     } catch (error) {
-      // TODO: serialize error
+      // TODO: log error
       console.error('Failed to send message: ', JSON.stringify(error, null, 2));
 
-      return {
-        success: false,
-        error: 'Failed to send message',
-      };
+      throw new Error('Failed to send message');
     }
   });

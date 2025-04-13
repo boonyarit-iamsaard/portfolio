@@ -9,6 +9,7 @@ import { SpeedInsights } from '@vercel/speed-insights/next';
 import { fontMono, fontSans } from '@/core/styles/fonts';
 import { AppLayout } from '@/common/components/layout/app-layout';
 import { ThemeProvider } from '@/common/components/theme-provider';
+import { Toaster } from '@/common/components/ui/sonner';
 import { TooltipProvider } from '@/common/components/ui/tooltip';
 import { cn } from '@/common/helpers/cn';
 
@@ -41,9 +42,10 @@ export default function RootLayout({ children }: RootLayoutProps) {
           <TooltipProvider>
             <AppLayout>{children}</AppLayout>
           </TooltipProvider>
+          <Analytics />
+          <SpeedInsights />
+          <Toaster />
         </ThemeProvider>
-        <Analytics />
-        <SpeedInsights />
       </body>
     </html>
   );

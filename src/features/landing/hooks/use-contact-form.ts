@@ -1,5 +1,6 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useHookFormAction } from '@next-safe-action/adapter-react-hook-form/hooks';
+import { toast } from 'sonner';
 
 import { sendMessageAction } from '../actions/send-message-action';
 import { sendMessageSchema } from '../validators/send-message';
@@ -10,20 +11,17 @@ export function useContactForm() {
     zodResolver(sendMessageSchema),
     {
       actionProps: {
-        onSuccess: (data) => {
-          console.log(
-            'Message sent successfully: ',
-            JSON.stringify(data, null, 2),
-          );
-          // TODO: notify success
+        onSuccess: () => {
+          toast('Your message has been sent.');
           form.reset();
         },
         onError: (error) => {
+          // TODO: log error
           console.error(
             'Failed to send message: ',
             JSON.stringify(error, null, 2),
           );
-          // TODO: notify error
+          toast.error('Failed to send message.');
           form.reset();
         },
       },
