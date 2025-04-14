@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { FileSearch } from 'lucide-react';
 
 import { Tag } from '@/common/components/tag';
+import { Badge } from '@/common/components/ui/badge';
 import { Button } from '@/common/components/ui/button';
 import {
   Card,
@@ -37,29 +38,28 @@ export function ArticleCard({ article, activeTags }: ArticleCardProps) {
         />
       </div>
       <div className="flex flex-col p-6 md:col-span-3">
-        <CardHeader className="p-0">
-          <div className="flex flex-col gap-1 md:flex-row md:items-center md:justify-between md:gap-4">
+        <CardHeader className="mb-2 p-0">
+          <div className="flex flex-col gap-2">
             <CardTitle className="text-xl">
               <Link href={article.permalink} className="hover:text-primary">
                 {article.title}
               </Link>
             </CardTitle>
-            <time className="text-muted-foreground shrink-0 text-sm">
-              {formatDate(article.date)}
-            </time>
+            <CardDescription className="text-muted-foreground flex shrink-0 items-center gap-2 text-sm">
+              <time>{formatDate(article.date)}</time>
+              {article.status === 'draft' ? <Badge>draft</Badge> : null}
+            </CardDescription>
           </div>
-          <CardDescription className="mt-2 line-clamp-2">
-            {article.description}
-          </CardDescription>
         </CardHeader>
-        <CardContent className="flex-1 p-0">
-          <div className="flex flex-wrap gap-2 py-4">
+        <CardContent className="text-muted-foreground mb-4 line-clamp-2 justify-start p-0 text-sm">
+          {article.description}
+        </CardContent>
+        <CardFooter className="flex items-center justify-between p-0">
+          <div className="flex flex-wrap gap-2">
             {article.tags.map((tag) => (
               <Tag key={tag} tag={tag} activeTags={activeTags} />
             ))}
           </div>
-        </CardContent>
-        <CardFooter className="items-end justify-end p-0">
           <Button variant="link" asChild className="px-0">
             <Link href={article.permalink}>Read more</Link>
           </Button>

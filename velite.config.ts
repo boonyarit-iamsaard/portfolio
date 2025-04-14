@@ -1,14 +1,22 @@
 import rehypeShiki from '@shikijs/rehype';
 import { defineCollection, defineConfig, s } from 'velite';
 
-export const tagSchema = s
-  .string()
-  .toLowerCase()
-  .transform((tag) => tag.replace(/\s/g, ''));
+import { env } from '@/core/configs/env.config';
 
 const count = s
   .object({ total: s.number(), articles: s.number() })
   .default({ total: 0, articles: 0 });
+
+const status = s.union([
+  s.literal('draft'),
+  s.literal('published'),
+  s.literal('archived'),
+]);
+
+const tag = s
+  .string()
+  .toLowerCase()
+  .transform((tag) => tag.replace(/\s/g, ''));
 
 const about = defineCollection({
   name: 'About',
@@ -38,10 +46,11 @@ const articles = defineCollection({
       description: s.string().max(255),
       cover: s.image(),
       slug: s.slug('article'),
-      tags: s.array(tagSchema),
+      tags: s.array(tag),
       date: s.isodate(),
       metadata: s.metadata(),
       content: s.mdx(),
+      status,
     })
     .transform((data) => ({
       ...data,
@@ -129,5 +138,12 @@ export default defineConfig({
       tag.count.total = tag.count.articles;
       tag.permalink = `/articles?tag=${tag.slug}`;
     }
+
+    /**
+     * Prepare articles
+     */
+    articles.filter(
+      (a) => env.NODE_ENV === 'production' && a.status === 'published',
+    );
   },
 });
