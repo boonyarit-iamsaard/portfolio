@@ -1,12 +1,29 @@
-type TagProps = {
-  tag: string;
-};
+import Link from 'next/link';
 
-export function Tag({ tag }: TagProps) {
+import { Button } from './ui/button';
+
+type TagProps = Readonly<{
+  tag: string;
+  activeTags?: string[];
+}>;
+
+export function Tag({ tag, activeTags = [] }: TagProps) {
+  const isActive = activeTags.includes(tag);
+  const tagsFilter = isActive
+    ? activeTags.filter((t) => t !== tag)
+    : activeTags.concat(tag);
+  const href =
+    tagsFilter.length === 0
+      ? '/articles'
+      : `/articles?tags=${tagsFilter.join(',')}`;
+
   return (
-    <span className="hover:border-border hover:bg-muted cursor-pointer rounded-sm border border-transparent px-2 py-1 text-sm font-medium">
-      <span className="text-muted-foreground">#</span>
-      {tag}
-    </span>
+    <Button
+      asChild
+      variant={isActive ? 'default' : 'ghost'}
+      className="h-auto rounded-full px-2.5 py-0.5"
+    >
+      <Link href={href}>#{tag}</Link>
+    </Button>
   );
 }

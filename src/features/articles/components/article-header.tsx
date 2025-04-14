@@ -7,9 +7,10 @@ import type { Article } from '@/velite';
 
 type ArticleHeaderProps = Readonly<{
   article: Article;
+  activeTags?: string[];
 }>;
 
-export function ArticleHeader({ article }: ArticleHeaderProps) {
+export function ArticleHeader({ article, activeTags }: ArticleHeaderProps) {
   return (
     <div className="space-y-2">
       <div className="text-muted-foreground flex items-center gap-2 text-sm">
@@ -21,7 +22,7 @@ export function ArticleHeader({ article }: ArticleHeaderProps) {
       </h1>
       <div className="flex flex-wrap">
         {article.tags.map((tag) => (
-          <Tag key={tag} tag={tag} />
+          <Tag key={tag} tag={tag} activeTags={activeTags} />
         ))}
       </div>
     </div>
