@@ -1,17 +1,38 @@
 import rehypeShiki from '@shikijs/rehype';
 import { defineCollection, defineConfig, s } from 'velite';
 
-import { env } from '@/core/configs/env.config';
+import type { Article, Project, Tag } from '@/velite';
+
+// TODO: reconsider refactoring this configuration again
+
+function getTags(collection: { tags: string[] }[], tags: Tag[]): string[] {
+  const collectionTags = new Set(collection.flatMap((item) => item.tags));
+  const existingTags = new Set(tags.map((tag) => tag.name));
+
+  return Array.from(collectionTags).filter((tag) => !existingTags.has(tag));
+}
+
+function updateTagCounts(
+  tags: Tag[],
+  articles: Article[],
+  projects: Project[],
+): void {
+  for (const tag of tags) {
+    tag.count.articles = articles.filter((a) =>
+      a.tags.includes(tag.name),
+    ).length;
+    tag.count.projects = projects.filter((p) =>
+      p.tags.includes(tag.name),
+    ).length;
+    tag.count.total = tag.count.articles + tag.count.projects;
+  }
+}
 
 const count = s
-  .object({ total: s.number(), articles: s.number() })
-  .default({ total: 0, articles: 0 });
+  .object({ total: s.number(), articles: s.number(), projects: s.number() })
+  .default({ total: 0, articles: 0, projects: 0 });
 
-const status = s.union([
-  s.literal('draft'),
-  s.literal('published'),
-  s.literal('archived'),
-]);
+const resource = s.union([s.literal('articles'), s.literal('projects')]);
 
 const tag = s
   .string()
@@ -50,7 +71,11 @@ const articles = defineCollection({
       date: s.isodate(),
       metadata: s.metadata(),
       content: s.mdx(),
-      status,
+      status: s.union([
+        s.literal('draft'),
+        s.literal('published'),
+        s.literal('archived'),
+      ]),
     })
     .transform((data) => ({
       ...data,
@@ -66,9 +91,18 @@ const projects = defineCollection({
       title: s.string().max(100),
       description: s.string().max(255),
       slug: s.slug('project'),
+      tags: s.array(tag),
+      github: s.string().url().optional(),
+      preview: s.string().url().optional(),
       date: s.isodate(),
       metadata: s.metadata(),
       content: s.mdx(),
+      status: s.union([
+        s.literal('active'),
+        s.literal('stable'),
+        s.literal('maintenance'),
+        s.literal('experimental'),
+      ]),
     })
     .transform((data) => ({
       ...data,
@@ -79,16 +113,12 @@ const projects = defineCollection({
 const tags = defineCollection({
   name: 'Tag',
   pattern: 'tags/tags.json',
-  // TODO: remove unnecessary fields
-  schema: s
-    .object({
-      name: s.string().max(20),
-      slug: s.slug('global'),
-      cover: s.image().optional(),
-      description: s.string().max(255).optional(),
-      count,
-    })
-    .transform((data) => ({ ...data, permalink: `/${data.slug}` })),
+  schema: s.object({
+    name: s.string().max(20),
+    slug: s.slug('global'),
+    resource,
+    count,
+  }),
 });
 
 export default defineConfig({
@@ -116,34 +146,30 @@ export default defineConfig({
       ],
     ],
   },
-  prepare({ articles, tags }) {
-    /**
-     * Prepare tags
-     */
-    const tagsFromArticles = Array.from(
-      new Set(articles.flatMap((a) => a.tags)),
-    ).filter((a) => tags.find((t) => t.name === a) == null);
-    tags.push(
-      ...tagsFromArticles.map((name) => ({
+  prepare({ articles, projects, tags }) {
+    const tagsFromArticles = getTags(articles, tags);
+    const tagsFromProjects = getTags(projects, tags);
+
+    const allTags: Array<{ name: string; resource: 'articles' | 'projects' }> =
+      [];
+    tagsFromArticles.forEach((name) => {
+      allTags.push({ name, resource: 'articles' });
+    });
+    tagsFromProjects.forEach((name) => {
+      if (!allTags.find((t) => t.name === name)) {
+        allTags.push({ name, resource: 'projects' });
+      }
+    });
+
+    allTags.forEach(({ name, resource }) => {
+      tags.push({
         name,
         slug: name,
-        permalink: '',
-        count: { total: 0, articles: 0 },
-      })),
-    );
-    for (const tag of tags) {
-      tag.count.articles = articles.filter((a) =>
-        a.tags.includes(tag.name),
-      ).length;
-      tag.count.total = tag.count.articles;
-      tag.permalink = `/articles?tag=${tag.slug}`;
-    }
+        resource,
+        count: { total: 0, articles: 0, projects: 0 },
+      });
+    });
 
-    /**
-     * Prepare articles
-     */
-    articles.filter(
-      (a) => env.NODE_ENV === 'production' && a.status === 'published',
-    );
+    updateTagCounts(tags, articles, projects);
   },
 });

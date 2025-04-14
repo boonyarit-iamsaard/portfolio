@@ -57,7 +57,12 @@ export function ArticleCard({ article, activeTags }: ArticleCardProps) {
         <CardFooter className="flex items-center justify-between p-0">
           <div className="flex flex-wrap gap-2">
             {article.tags.map((tag) => (
-              <Tag key={tag} tag={tag} activeTags={activeTags} />
+              <Tag
+                key={tag}
+                tag={tag}
+                activeTags={activeTags}
+                resource="articles"
+              />
             ))}
           </div>
           <Button variant="link" asChild className="px-0">

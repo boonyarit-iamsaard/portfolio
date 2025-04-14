@@ -22,7 +22,12 @@ export function ArticleHeader({ article, activeTags }: ArticleHeaderProps) {
       </h1>
       <div className="flex flex-wrap">
         {article.tags.map((tag) => (
-          <Tag key={tag} tag={tag} activeTags={activeTags} />
+          <Tag
+            key={tag}
+            tag={tag}
+            activeTags={activeTags}
+            resource="articles"
+          />
         ))}
       </div>
     </div>

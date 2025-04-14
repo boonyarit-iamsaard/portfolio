@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 
 import { z } from 'zod';
 
+import { FilterByTags } from '@/common/components/FilterByTags';
 import { PageHeader } from '@/common/components/page-header';
-import { Tag } from '@/common/components/tag';
 import {
   ArticleCard,
   ArticleCardPlaceholder,
@@ -42,8 +42,9 @@ export default async function Page({ searchParams }: ArticlesPageProps) {
     );
   }
 
+  const articlesTags = tags.filter((t) => t.resource === 'articles');
   const validTags = selectedTags.filter(
-    (tag) => tags.find((t) => t.name === tag) != null,
+    (tag) => articlesTags.find((t) => t.name === tag) != null,
   );
 
   const filteredArticles = allArticles
@@ -63,14 +64,11 @@ export default async function Page({ searchParams }: ArticlesPageProps) {
         description="Insights, tutorials, and thoughts on web development."
       />
       <section className="container space-y-8">
-        <div className="space-y-2">
-          <h2 className="font-bold">Filter by tags</h2>
-          <div className="flex flex-wrap gap-2">
-            {tags.map((tag) => (
-              <Tag key={tag.name} tag={tag.name} activeTags={validTags} />
-            ))}
-          </div>
-        </div>
+        <FilterByTags
+          allTags={articlesTags}
+          activeTags={validTags}
+          resource="articles"
+        />
         <div className="grid gap-4">
           {filteredArticles.length === 0 ? (
             <ArticleCardPlaceholder />

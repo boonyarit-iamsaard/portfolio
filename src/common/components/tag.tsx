@@ -4,18 +4,19 @@ import { Button } from './ui/button';
 
 type TagProps = Readonly<{
   tag: string;
+  resource: 'articles' | 'projects';
   activeTags?: string[];
 }>;
 
-export function Tag({ tag, activeTags = [] }: TagProps) {
+export function Tag({ tag, resource, activeTags = [] }: TagProps) {
   const isActive = activeTags.includes(tag);
   const tagsFilter = isActive
     ? activeTags.filter((t) => t !== tag)
     : activeTags.concat(tag);
   const href =
     tagsFilter.length === 0
-      ? '/articles'
-      : `/articles?tags=${tagsFilter.join(',')}`;
+      ? `/${resource}`
+      : `/${resource}?tags=${tagsFilter.join(',')}`;
 
   return (
     <Button
