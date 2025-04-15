@@ -26,10 +26,10 @@ export async function generateMetadata({
     return {};
   }
 
+  // TODO: define SEO configuration in 'core/configs/app.config.ts'
   return {
     title: article.title,
     description: article.description,
-    // TODO: add app configuration for SEO
     authors: [
       {
         name: 'Boonyarit Iamsa-ard',
@@ -38,6 +38,8 @@ export async function generateMetadata({
     ],
     keywords: article.keywords,
     openGraph: {
+      siteName: 'boonyarit.me',
+      url: `https://boonyarit.me/articles/${article.slug}`,
       images: [
         {
           url: article.cover.src,
