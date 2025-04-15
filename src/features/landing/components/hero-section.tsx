@@ -33,7 +33,7 @@ export function HeroSection() {
                 <Link href="#contact-form">Contact me</Link>
               </Button>
               <Button asChild size="lg" variant="secondary">
-                <a href="/assets/boonyarit-iamsaard-2025-02-16.pdf" download>
+                <a href="/assets/boonyarit-iamsaard-2025-04-15.pdf" download>
                   <DownloadIcon className="size-4" />
                   Resume
                 </a>

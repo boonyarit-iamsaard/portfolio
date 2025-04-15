@@ -42,7 +42,7 @@ export default function AboutPage() {
           </p>
         </div>
         <Button asChild size="lg" className="gap-2">
-          <a href="/assets/boonyarit-iamsaard-2025-02-16.pdf" download>
+          <a href="/assets/boonyarit-iamsaard-2025-04-15.pdf" download>
             <Download className="size-4" />
             Resume
           </a>
