@@ -32,6 +32,8 @@ const count = s
   .object({ total: s.number(), articles: s.number(), projects: s.number() })
   .default({ total: 0, articles: 0, projects: 0 });
 
+const keywords = s.array(s.string()).optional();
+
 const resource = s.union([s.literal('articles'), s.literal('projects')]);
 
 const tag = s
@@ -68,6 +70,7 @@ const articles = defineCollection({
       cover: s.image(),
       slug: s.slug('article'),
       tags: s.array(tag),
+      keywords,
       date: s.isodate(),
       metadata: s.metadata(),
       content: s.mdx(),

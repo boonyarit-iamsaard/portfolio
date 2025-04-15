@@ -1,3 +1,5 @@
+import type { Metadata } from 'next';
+
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 
@@ -13,6 +15,45 @@ type PageProps = Readonly<{
 function getArticleBySlug(slug: string) {
   return articles.find((article) => article.slug === slug);
 }
+
+export async function generateMetadata({
+  params,
+}: PageProps): Promise<Metadata> {
+  const { slug } = await params;
+
+  const article = getArticleBySlug(slug);
+  if (!article) {
+    return {};
+  }
+
+  return {
+    title: article.title,
+    description: article.description,
+    // TODO: add app configuration for SEO
+    authors: [
+      {
+        name: 'Boonyarit Iamsa-ard',
+        url: 'https://boonyarit.me',
+      },
+    ],
+    keywords: article.keywords,
+    openGraph: {
+      images: [
+        {
+          url: article.cover.src,
+        },
+      ],
+    },
+  };
+}
+
+export function generateStaticParams() {
+  return articles.map((article) => ({
+    slug: article.slug,
+  }));
+}
+
+export const dynamicParams = false;
 
 export default async function Page({ params }: PageProps) {
   const { slug } = await params;
@@ -41,11 +82,3 @@ export default async function Page({ params }: PageProps) {
     </div>
   );
 }
-
-export function generateStaticParams() {
-  return articles.map((article) => ({
-    slug: article.slug,
-  }));
-}
-
-export const dynamicParams = false;
