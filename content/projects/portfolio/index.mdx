@@ -2,6 +2,7 @@
 title: boonyarit.me
 description: My personal portfolio website (this site)
 tags: ['nextjs', 'typescript', 'tailwind']
+cover: cover.png
 slug: portfolio
 github: https://github.com/boonyarit-iamsaard/portfolio
 preview: https://boonyarit.me
@@ -9,8 +10,34 @@ date: 2025-04-02 13:00:00
 status: active
 ---
 
-## Placeholder Content
+## Overview
 
-This is placeholder content for the project description. The actual content will be added later.
+**boonyarit.me** is my personal portfolio website, meticulously crafted to showcase my projects, technical skills, and professional journey. It acts as a dynamic digital resume and a central hub for potential employers, collaborators, and fellow developers. The core goal was to build a modern, performant, and accessible online presence that truly reflects my passion for web development and commitment to quality. This project is under active development, with ongoing improvements and feature additions.
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+## Key Features
+
+- **Fully Responsive Design**: Ensures a seamless and intuitive experience across all devices, from large desktops to small mobile screens.
+- **Integrated Blog**: A dedicated space where I share technical insights, development tutorials, and updates on my latest projects.
+- **User-Friendly Dark Mode**: Offers a comfortable viewing experience in low-light conditions with an easy-to-toggle theme switcher.
+- **Highly Performance Optimized**: Engineered for speed using modern web techniques, resulting in fast load times and smooth user interactions.
+- **SEO Enhanced**: Implemented with SEO best practices, including structured data and relevant meta tags, to maximize visibility on search engines.
+
+## Development Process
+
+This portfolio was built using the **Next.js App Router** and **TypeScript**, providing a modern, type-safe foundation. Content management leverages **Velite** to process local **MDX** files (projects, articles) into type-safe JSON data during the build. This approach enables efficient **Static Site Generation (SSG)** for content-heavy pages, ensuring fast load times and excellent SEO.
+
+The user interface was crafted with **Tailwind CSS** for utility-first styling, complemented by pre-built, accessible components from **Shadcn UI**. This combination allowed for rapid development while maintaining a consistent design language. Key considerations included:
+
+- **Performance:** Leveraging Next.js features like automatic code splitting, font optimization (`src/core/styles/fonts.ts`), and built-in image optimization. SSG further minimizes server load and improves TTFB (Time to First Byte).
+- **Content Integration:** Using `@next/mdx` and `rehypeShiki` (via Velite config) for seamless rendering and syntax highlighting of Markdown content.
+- **Modularity:** Organizing the codebase using a feature-sliced structure (`src/features`) to enhance maintainability and scalability.
+- **Deployment:** The site is deployed globally via **Vercel**, taking advantage of its seamless Git integration and CDN for optimal performance and availability.
+
+## Links
+
+- [Live Site](https://boonyarit.me)
+- [GitHub Repo](https://github.com/boonyarit-iamsaard/portfolio)
+
+## Get in Touch
+
+Interested in collaborating, discussing a project, or learning more about my work? Feel free to reach out via [email](mailto:boonyarit.iamsaard@gmail.com) or connect with me on [LinkedIn](https://www.linkedin.com/in/boonyarit-iamsaard/).

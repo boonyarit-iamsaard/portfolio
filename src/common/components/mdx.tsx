@@ -30,12 +30,19 @@ const sharedComponents: MDXComponents = {
   p: ({ className, ...props }: ComponentProps<'p'>) => (
     <p className={cn('mb-4', className)} {...props} />
   ),
-  a: ({ className, ...props }: ComponentProps<'a'>) => (
+  a: ({
+    className,
+    target: _target,
+    rel: _rel,
+    ...props
+  }: ComponentProps<'a'>) => (
     <a
       className={cn(
         'text-primary font-medium underline underline-offset-4',
         className,
       )}
+      target="_blank"
+      rel="noopener noreferrer"
       {...props}
     />
   ),

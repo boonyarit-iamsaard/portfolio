@@ -1,7 +1,8 @@
+import Image from 'next/image';
 import { notFound } from 'next/navigation';
 
 import { MDX } from '@/common/components/mdx';
-import { PageHeader } from '@/common/components/page-header';
+import { ProjectHeader } from '@/features/projects/components/project-header';
 
 import { projects } from '@/velite';
 
@@ -22,11 +23,20 @@ export default async function Page({ params }: PageProps) {
   }
 
   return (
-    <div className="space-y-16">
-      <PageHeader title={project.title} />
-      <section className="container">
+    <div className="container-content pt-32 pb-16">
+      <div className="relative min-h-[calc(100svh*0.382)] overflow-hidden rounded-t-lg">
+        <Image
+          src={project.cover}
+          alt={project.title}
+          fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
+          className="object-cover"
+        />
+      </div>
+      <div className="bg-muted space-y-4 rounded-b-lg p-4 sm:px-16 sm:py-8">
+        <ProjectHeader project={project} />
         <MDX content={project.content} />
-      </section>
+      </div>
     </div>
   );
 }

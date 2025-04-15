@@ -1,5 +1,6 @@
 import Link from 'next/link';
 
+import { cn } from '../helpers/cn';
 import { Button } from './ui/button';
 
 type TagProps = Readonly<{
@@ -21,10 +22,15 @@ export function Tag({ tag, resource, activeTags = [] }: TagProps) {
   return (
     <Button
       asChild
-      variant={isActive ? 'default' : 'ghost'}
-      className="h-auto rounded-full px-2.5 py-0.5"
+      variant={isActive ? 'default' : 'outline'}
+      className={cn(
+        'h-auto rounded-full px-2.5 py-0.5 shadow-none',
+        !isActive && 'bg-card',
+      )}
     >
-      <Link href={href}>#{tag}</Link>
+      <Link href={href} scroll={false}>
+        #{tag}
+      </Link>
     </Button>
   );
 }

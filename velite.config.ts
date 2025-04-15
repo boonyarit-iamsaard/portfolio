@@ -90,6 +90,7 @@ const projects = defineCollection({
     .object({
       title: s.string().max(100),
       description: s.string().max(255),
+      cover: s.image(),
       slug: s.slug('project'),
       tags: s.array(tag),
       github: s.string().url().optional(),

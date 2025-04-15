@@ -40,7 +40,7 @@ export function ArticleCard({ article, activeTags }: ArticleCardProps) {
       <div className="flex flex-col p-6 md:col-span-3">
         <CardHeader className="mb-2 p-0">
           <div className="flex flex-col gap-2">
-            <CardTitle className="text-xl">
+            <CardTitle className="text-xl font-bold">
               <Link href={article.permalink} className="hover:text-primary">
                 {article.title}
               </Link>
@@ -55,7 +55,7 @@ export function ArticleCard({ article, activeTags }: ArticleCardProps) {
           {article.description}
         </CardContent>
         <CardFooter className="flex items-center justify-between p-0">
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-1">
             {article.tags.map((tag) => (
               <Tag
                 key={tag}

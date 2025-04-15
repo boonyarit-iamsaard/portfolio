@@ -16,7 +16,7 @@ export function FilterByTags({
   return (
     <div className="space-y-2">
       <h2 className="text-sm leading-none font-medium">Filter by tags</h2>
-      <div className="flex flex-wrap gap-2">
+      <div className="flex flex-wrap gap-1">
         {allTags.map((tag) => (
           <TagComponent
             key={tag.name}
