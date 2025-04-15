@@ -1,3 +1,5 @@
+import type { Metadata } from 'next';
+
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 
@@ -13,6 +15,47 @@ type PageProps = Readonly<{
 function getProjectBySlug(slug: string) {
   return projects.find((project) => project.slug === slug);
 }
+
+export async function generateMetadata({
+  params,
+}: PageProps): Promise<Metadata> {
+  const { slug } = await params;
+
+  const project = getProjectBySlug(slug);
+  if (!project) {
+    return {};
+  }
+
+  // TODO: define SEO configuration in 'core/configs/app.config.ts'
+  return {
+    title: project.title,
+    description: project.description,
+    authors: [
+      {
+        name: 'Boonyarit Iamsa-ard',
+        url: 'https://boonyarit.me',
+      },
+    ],
+    keywords: project.keywords,
+    openGraph: {
+      siteName: 'boonyarit.me',
+      url: `https://boonyarit.me/projects/${project.slug}`,
+      images: [
+        {
+          url: project.cover.src,
+        },
+      ],
+    },
+  };
+}
+
+export function generateStaticParams() {
+  return projects.map((project) => ({
+    slug: project.slug,
+  }));
+}
+
+export const dynamicParams = false;
 
 export default async function Page({ params }: PageProps) {
   const { slug } = await params;
@@ -40,11 +83,3 @@ export default async function Page({ params }: PageProps) {
     </div>
   );
 }
-
-export function generateStaticParams() {
-  return projects.map((project) => ({
-    slug: project.slug,
-  }));
-}
-
-export const dynamicParams = false;

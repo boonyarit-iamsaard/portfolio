@@ -96,6 +96,7 @@ const projects = defineCollection({
       cover: s.image(),
       slug: s.slug('project'),
       tags: s.array(tag),
+      keywords,
       github: s.string().url().optional(),
       preview: s.string().url().optional(),
       date: s.isodate(),
