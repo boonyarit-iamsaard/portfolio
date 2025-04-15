@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { FileSearch } from 'lucide-react';
+import { ClockIcon, FileSearch, FileTextIcon } from 'lucide-react'; // Import new icons
 
 import { Tag } from '@/common/components/tag';
 import { Badge } from '@/common/components/ui/badge';
@@ -45,8 +45,16 @@ export function ArticleCard({ article, activeTags }: ArticleCardProps) {
                 {article.title}
               </Link>
             </CardTitle>
-            <CardDescription className="text-muted-foreground flex shrink-0 items-center gap-2 text-sm">
+            <CardDescription className="text-muted-foreground flex flex-wrap items-center gap-x-3 gap-y-1 text-sm">
               <time>{formatDate(article.date)}</time>
+              <span className="flex items-center gap-1">
+                <ClockIcon className="inline-block size-4" />
+                {article.metadata.readingTime} min read
+              </span>
+              <span className="flex items-center gap-1">
+                <FileTextIcon className="inline-block size-4" />
+                {article.metadata.wordCount} words
+              </span>
               {article.status === 'draft' ? <Badge>draft</Badge> : null}
             </CardDescription>
           </div>
