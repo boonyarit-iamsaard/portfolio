@@ -11,8 +11,8 @@ import { Button } from '@/common/components/ui/button';
 import { about } from '@/velite';
 
 export const metadata: Metadata = {
-  title: 'About - Boonyarit I.',
-  description: 'Learn more about Boonyarit I.',
+  title: 'About',
+  description: 'Learn more about Boonyarit Iamsa-ard',
 };
 
 export default function AboutPage() {
@@ -33,9 +33,14 @@ export default function AboutPage() {
         <h1 className="text-2xl font-bold tracking-tight md:text-4xl">
           Boonyarit Iamsa-ard
         </h1>
-        <p className="text-muted-foreground text-lg font-medium italic">
-          Full Stack Developer
-        </p>
+        <div className="flex flex-col gap-2">
+          <p className="text-muted-foreground font-medium italic">
+            Full Stack Developer
+          </p>
+          <p className="text-muted-foreground font-medium italic">
+            Bangkok, Thailand 🇹🇭
+          </p>
+        </div>
         <Button asChild size="lg" className="gap-2">
           <a href="/assets/boonyarit-iamsaard-2025-02-16.pdf" download>
             <Download className="size-4" />

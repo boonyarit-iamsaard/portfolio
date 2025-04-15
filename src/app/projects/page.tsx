@@ -20,9 +20,19 @@ const tagsParamSchema = z.object({
   tags: z.union([tagSchema, z.array(tagSchema)]).optional(),
 });
 
+// TODO: when number of projects is large, these keywords need to be explicitly defined here
+const projectsKeywords = Array.from(
+  new Set(
+    projects
+      .flatMap((project) => project.keywords)
+      .filter((k) => k !== undefined),
+  ),
+);
+
 export const metadata: Metadata = {
-  title: 'Projects - Boonyarit I.',
+  title: 'Projects',
   description: 'A showcase of my projects and work.',
+  keywords: projectsKeywords,
 };
 
 export default async function Page({ searchParams }: ProjectsPageProps) {

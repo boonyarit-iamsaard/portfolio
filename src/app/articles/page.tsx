@@ -23,9 +23,19 @@ const tagsParamSchema = z.object({
   tags: z.union([tagSchema, z.array(tagSchema)]).optional(),
 });
 
+// TODO: when number of articles is large, these keywords need to be explicitly defined here
+const articlesKeywords = Array.from(
+  new Set(
+    allArticles
+      .flatMap((article) => article.keywords)
+      .filter((k) => k !== undefined),
+  ),
+);
+
 export const metadata: Metadata = {
-  title: 'Articles - Boonyarit I.',
+  title: 'Articles',
   description: 'Insights, tutorials, and thoughts on web development.',
+  keywords: articlesKeywords,
 };
 
 export default async function Page({ searchParams }: ArticlesPageProps) {

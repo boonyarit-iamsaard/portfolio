@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 
+import { appConfig } from '@/core/configs/app.config';
 import { MDX } from '@/common/components/mdx';
 import { ArticleHeader } from '@/features/articles/components/article-header';
 
@@ -30,16 +31,25 @@ export async function generateMetadata({
   return {
     title: article.title,
     description: article.description,
-    authors: [
-      {
-        name: 'Boonyarit Iamsa-ard',
-        url: 'https://boonyarit.me',
-      },
-    ],
+    authors: appConfig.authors,
     keywords: article.keywords,
     openGraph: {
-      siteName: 'boonyarit.me',
-      url: `https://boonyarit.me/articles/${article.slug}`,
+      type: 'article',
+      title: article.title,
+      description: article.description,
+      siteName: appConfig.name,
+      url: `${appConfig.url}/articles/${article.slug}`,
+      images: [
+        {
+          url: article.cover.src,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: article.title,
+      description: article.description,
+      creator: appConfig.creator,
       images: [
         {
           url: article.cover.src,
