@@ -1,36 +1,28 @@
 import type { Metadata } from 'next';
 
-import { z } from 'zod';
-
 import { FilterByTags } from '@/common/components/filter-by-tags';
 import {
   PageHeader,
   PageHeaderDescription,
   PageHeaderHeading,
 } from '@/common/components/page-header';
+import { filterByTags } from '@/common/helpers/tag';
 import {
   ArticleCard,
   ArticleCardPlaceholder,
 } from '@/features/articles/components/article-card';
 
-import { articles as allArticles, tags } from '@/velite';
+import type { SearchParams } from '@/common/definitions/search-params';
+import { articles, tags } from '@/velite';
 
 type ArticlesPageProps = Readonly<{
-  searchParams: Promise<Record<string, string | string[] | undefined>>;
+  searchParams: SearchParams;
 }>;
 
-const tagSchema = z
-  .string()
-  .toLowerCase()
-  .transform((tag) => tag.replace(/\s/g, ''));
-const tagsParamSchema = z.object({
-  tags: z.union([tagSchema, z.array(tagSchema)]).optional(),
-});
-
-// TODO: when number of articles is large, these keywords need to be explicitly defined here
-const articlesKeywords = Array.from(
+// TODO: explicitly define keywords
+const keywords = Array.from(
   new Set(
-    allArticles
+    articles
       .flatMap((article) => article.keywords)
       .filter((k) => k !== undefined),
   ),
@@ -39,36 +31,16 @@ const articlesKeywords = Array.from(
 export const metadata: Metadata = {
   title: 'Articles',
   description: 'Insights, tutorials, and thoughts on web development.',
-  keywords: articlesKeywords,
+  keywords,
 };
 
 export default async function Page({ searchParams }: ArticlesPageProps) {
-  // TODO: separate page logic
-  const queryParams = await searchParams;
-
-  const selectedTags: string[] = [];
-  const parsedTags = tagsParamSchema.safeParse(queryParams);
-  if (parsedTags.success && parsedTags.data.tags) {
-    selectedTags.push(
-      ...(Array.isArray(parsedTags.data.tags)
-        ? parsedTags.data.tags
-        : parsedTags.data.tags.split(',')),
-    );
-  }
-
-  const articlesTags = tags.filter((t) => t.resource === 'articles');
-  const validTags = selectedTags.filter(
-    (tag) => articlesTags.find((t) => t.name === tag) != null,
+  const { filteredResource, activeTags, resourceTags } = await filterByTags(
+    articles,
+    searchParams,
+    tags,
+    'articles',
   );
-
-  const filteredArticles = allArticles
-    .filter((article) =>
-      validTags.length === 0
-        ? true
-        : article.tags.some((tag) => validTags.includes(tag)),
-    )
-    // TODO: sort with date-fns
-    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
   // TODO: add pagination
   return (
@@ -81,19 +53,19 @@ export default async function Page({ searchParams }: ArticlesPageProps) {
       </PageHeader>
       <section className="container space-y-8 sm:space-y-12">
         <FilterByTags
-          allTags={articlesTags}
-          activeTags={validTags}
+          resourceTags={resourceTags}
+          activeTags={activeTags}
           resource="articles"
         />
         <div className="grid gap-4 sm:gap-8">
-          {filteredArticles.length === 0 ? (
+          {filteredResource.length === 0 ? (
             <ArticleCardPlaceholder />
           ) : (
-            filteredArticles.map((article) => (
+            filteredResource.map((article) => (
               <ArticleCard
                 key={article.slug}
                 article={article}
-                activeTags={validTags}
+                activeTags={activeTags}
               />
             ))
           )}
