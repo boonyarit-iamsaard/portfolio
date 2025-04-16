@@ -17,8 +17,8 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <div className="container-content space-y-16 py-16">
-      <div className="flex min-h-[calc(100dvh*0.382)] flex-col items-center justify-center gap-4 text-center">
+    <div className="container-content py-16">
+      <div className="flex aspect-video w-full flex-col items-center justify-center gap-4 text-center">
         <div className="relative size-24 md:size-32">
           <Image
             src={profile}
@@ -34,11 +34,8 @@ export default function AboutPage() {
           Boonyarit Iamsa-ard
         </h1>
         <div className="flex flex-col gap-2">
-          <p className="text-muted-foreground font-medium italic">
-            Full Stack Developer
-          </p>
-          <p className="text-muted-foreground text-sm font-medium italic">
-            Bangkok, Thailand 🇹🇭
+          <p className="text-muted-foreground font-medium italic sm:text-lg">
+            Iterate, learn, and improve along the way.
           </p>
         </div>
         <Button asChild size="lg" className="gap-2">
