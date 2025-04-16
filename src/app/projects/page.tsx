@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 
 import { z } from 'zod';
 
-import { FilterByTags } from '@/common/components/FilterByTags';
+import { FilterByTags } from '@/common/components/filter-by-tags';
 import {
   PageHeader,
   PageHeaderDescription,
