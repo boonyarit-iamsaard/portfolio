@@ -37,7 +37,7 @@ export default function AboutPage() {
           <p className="text-muted-foreground font-medium italic">
             Full Stack Developer
           </p>
-          <p className="text-muted-foreground font-medium italic">
+          <p className="text-muted-foreground text-sm font-medium italic">
             Bangkok, Thailand 🇹🇭
           </p>
         </div>

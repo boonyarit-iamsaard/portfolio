@@ -77,7 +77,7 @@ export default async function Page({ params }: PageProps) {
 
   return (
     <div className="container-content pt-32 pb-16">
-      <div className="relative min-h-[calc(100svh*0.382)] overflow-hidden rounded-t-lg">
+      <div className="relative aspect-video w-full overflow-hidden rounded-t-lg">
         <Image
           src={article.cover}
           alt={article.title}
