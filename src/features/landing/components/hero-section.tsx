@@ -7,8 +7,6 @@ import profile from '@/core/assets/images/profile.png';
 import { SocialLinks } from '@/common/components/social-links';
 import { Button } from '@/common/components/ui/button';
 
-// TODO: re-consider the background radial gradient
-// <section className="space-y-8 bg-radial-[at_25%_50%] from-slate-50 via-slate-200 to-slate-300 to-95% py-16">
 export function HeroSection() {
   return (
     <section className="flex min-h-dvh flex-col items-center justify-center space-y-8 py-16">
@@ -56,11 +54,6 @@ export function HeroSection() {
             </div>
           </div>
         </div>
-      </div>
-      <div className="flex items-center justify-center">
-        <span className="text-foreground flex items-center gap-2 rounded-full border border-amber-200 bg-amber-200/20 px-3 py-1.5 text-sm font-medium">
-          🚧 This site is under active development
-        </span>
       </div>
     </section>
   );
