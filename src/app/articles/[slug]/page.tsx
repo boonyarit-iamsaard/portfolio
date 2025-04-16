@@ -5,6 +5,7 @@ import { notFound } from 'next/navigation';
 
 import { appConfig } from '@/core/configs/app.config';
 import { MDX } from '@/common/components/mdx';
+import { PageHeader } from '@/common/components/page-header';
 import { ArticleHeader } from '@/features/articles/components/article-header';
 
 import { articles } from '@/velite';
@@ -76,20 +77,24 @@ export default async function Page({ params }: PageProps) {
   }
 
   return (
-    <div className="container-content pt-32 pb-16">
-      <div className="relative aspect-video w-full overflow-hidden rounded-t-lg">
-        <Image
-          src={article.cover}
-          alt={article.title}
-          fill
-          // TODO: improve sizes property
-          sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
-          className="object-cover"
-        />
-      </div>
-      <div className="bg-muted space-y-4 rounded-b-lg p-4 sm:px-16 sm:py-8">
+    <div className="py-16">
+      <PageHeader className="container-content">
         <ArticleHeader article={article} />
-        <MDX content={article.content} />
+      </PageHeader>
+      <div className="container-content">
+        <div className="relative aspect-video w-full overflow-hidden rounded-t-lg">
+          <Image
+            src={article.cover}
+            alt={article.title}
+            fill
+            // TODO: improve sizes property
+            sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
+            className="object-cover"
+          />
+        </div>
+        <div className="bg-muted rounded-b-lg p-4 sm:px-16 sm:py-8">
+          <MDX content={article.content} />
+        </div>
       </div>
     </div>
   );

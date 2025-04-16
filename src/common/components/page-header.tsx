@@ -4,11 +4,12 @@ import { cn } from '../helpers/cn';
 
 export function PageHeader({
   children,
+  className,
   ...props
 }: HTMLAttributes<HTMLDivElement>) {
   return (
-    <section {...props}>
-      <div className="container flex flex-col items-start gap-2 py-8 sm:py-12">
+    <section className={cn('container', className)} {...props}>
+      <div className="flex flex-col items-start gap-2 py-8 sm:py-12">
         {children}
       </div>
     </section>
