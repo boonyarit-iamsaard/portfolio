@@ -22,7 +22,7 @@ export function Tag({ tag, resource, activeTags = [] }: TagProps) {
   return (
     <Button
       asChild
-      variant={isActive ? 'default' : 'outline'}
+      variant={isActive ? 'default' : 'secondary'}
       className={cn(
         'h-auto rounded-full px-2.5 py-0.5 shadow-none',
         !isActive && 'bg-card',
