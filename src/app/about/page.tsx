@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <div className="container-content space-y-16 py-16">
-      <div className="flex min-h-[calc(100svh*0.382)] flex-col items-center justify-center gap-4 text-center">
+      <div className="flex min-h-[calc(100dvh*0.382)] flex-col items-center justify-center gap-4 text-center">
         <div className="relative size-24 md:size-32">
           <Image
             src={profile}

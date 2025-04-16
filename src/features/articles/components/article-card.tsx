@@ -40,12 +40,12 @@ export function ArticleCard({ article, activeTags }: ArticleCardProps) {
       <div className="flex flex-col p-6 md:col-span-3">
         <CardHeader className="mb-2 p-0">
           <div className="flex flex-col gap-2">
-            <CardTitle className="text-xl font-bold">
+            <CardTitle className="text-lg font-bold">
               <Link href={article.permalink} className="hover:text-primary">
                 {article.title}
               </Link>
             </CardTitle>
-            <CardDescription className="text-muted-foreground flex flex-wrap items-center gap-x-3 gap-y-1 text-sm">
+            <CardDescription className="text-muted-foreground flex flex-wrap items-center gap-2 text-sm">
               <time>{formatDate(article.date)}</time>
               <span className="flex items-center gap-1">
                 <ClockIcon className="inline-block size-4" />

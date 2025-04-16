@@ -6,7 +6,7 @@ import { TechStackSection } from '@/features/landing/components/tech-stack-secti
 
 export default function Page() {
   return (
-    <div className="space-y-16 md:space-y-24">
+    <div className="space-y-16">
       <HeroSection />
       <ProjectsSection />
       <ArticlesSection />

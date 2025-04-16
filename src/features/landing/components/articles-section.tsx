@@ -11,7 +11,7 @@ export function ArticlesSection() {
   return (
     <section className="container space-y-8">
       <SectionHeader title="Latest Articles" viewAllLink="/articles" />
-      <div className="grid gap-4">
+      <div className="grid gap-4 sm:gap-8">
         {latestArticles.map((article) => (
           <ArticleCard key={article.slug} article={article} />
         ))}
