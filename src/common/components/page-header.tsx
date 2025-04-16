@@ -1,23 +1,46 @@
-type PageHeaderProps = Readonly<{
-  title?: string;
-  description?: string;
-}>;
+import type { HTMLAttributes } from 'react';
 
-export function PageHeader({ title, description }: PageHeaderProps) {
+import { cn } from '../helpers/cn';
+
+export function PageHeader({
+  children,
+  ...props
+}: HTMLAttributes<HTMLDivElement>) {
   return (
-    <section>
-      <div className="container flex min-h-[calc(100svh*0.382)] flex-col items-center justify-center gap-4 text-center">
-        {title ? (
-          <h1 className="text-2xl font-bold tracking-tight md:text-4xl">
-            {title}
-          </h1>
-        ) : null}
-        {description ? (
-          <p className="text-muted-foreground text-lg md:text-xl">
-            {description}
-          </p>
-        ) : null}
+    <section {...props}>
+      <div className="container flex flex-col items-start gap-2 py-8 sm:py-12">
+        {children}
       </div>
     </section>
+  );
+}
+
+export function PageHeaderHeading({
+  className,
+  ...props
+}: HTMLAttributes<HTMLHeadingElement>) {
+  return (
+    <h1
+      className={cn(
+        'text-2xl leading-tight font-bold tracking-tighter sm:text-4xl',
+        className,
+      )}
+      {...props}
+    />
+  );
+}
+
+export function PageHeaderDescription({
+  className,
+  ...props
+}: HTMLAttributes<HTMLParagraphElement>) {
+  return (
+    <p
+      className={cn(
+        'text-foreground line-clamp-1 text-base font-light text-balance sm:text-lg',
+        className,
+      )}
+      {...props}
+    />
   );
 }

@@ -3,7 +3,11 @@ import type { Metadata } from 'next';
 import { z } from 'zod';
 
 import { FilterByTags } from '@/common/components/FilterByTags';
-import { PageHeader } from '@/common/components/page-header';
+import {
+  PageHeader,
+  PageHeaderDescription,
+  PageHeaderHeading,
+} from '@/common/components/page-header';
 import { ProjectCard } from '@/features/projects/components/project-card';
 
 import { projects, tags } from '@/velite';
@@ -64,18 +68,20 @@ export default async function Page({ searchParams }: ProjectsPageProps) {
 
   // TODO: add pagination
   return (
-    <div className="space-y-16 py-16">
-      <PageHeader
-        title="Projects"
-        description="A showcase of my projects and work."
-      />
-      <section className="container space-y-8">
+    <div className="py-16">
+      <PageHeader>
+        <PageHeaderHeading>Projects</PageHeaderHeading>
+        <PageHeaderDescription>
+          A showcase of my projects and work.
+        </PageHeaderDescription>
+      </PageHeader>
+      <section className="container space-y-8 sm:space-y-12">
         <FilterByTags
           allTags={projectsTags}
           activeTags={validTags}
           resource="projects"
         />
-        <div className="grid gap-4 md:grid-cols-2">
+        <div className="grid gap-4 sm:gap-8 md:grid-cols-2">
           {filteredProjects.map((project) => (
             <ProjectCard
               key={project.slug}

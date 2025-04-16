@@ -3,7 +3,11 @@ import type { Metadata } from 'next';
 import { z } from 'zod';
 
 import { FilterByTags } from '@/common/components/FilterByTags';
-import { PageHeader } from '@/common/components/page-header';
+import {
+  PageHeader,
+  PageHeaderDescription,
+  PageHeaderHeading,
+} from '@/common/components/page-header';
 import {
   ArticleCard,
   ArticleCardPlaceholder,
@@ -68,18 +72,20 @@ export default async function Page({ searchParams }: ArticlesPageProps) {
 
   // TODO: add pagination
   return (
-    <div className="space-y-16 py-16">
-      <PageHeader
-        title="Articles"
-        description="Insights, tutorials, and thoughts on web development."
-      />
-      <section className="container space-y-8">
+    <div className="py-16">
+      <PageHeader>
+        <PageHeaderHeading>Articles</PageHeaderHeading>
+        <PageHeaderDescription>
+          Insights, tutorials, and thoughts on web development.
+        </PageHeaderDescription>
+      </PageHeader>
+      <section className="container space-y-8 sm:space-y-12">
         <FilterByTags
           allTags={articlesTags}
           activeTags={validTags}
           resource="articles"
         />
-        <div className="grid gap-4">
+        <div className="grid gap-4 sm:gap-8">
           {filteredArticles.length === 0 ? (
             <ArticleCardPlaceholder />
           ) : (
