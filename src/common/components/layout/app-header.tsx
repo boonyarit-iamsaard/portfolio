@@ -67,7 +67,7 @@ export function AppHeader() {
   const router = useRouter();
   const pathname = usePathname();
 
-  const handleDrawerOpenChange = (open: boolean) => {
+  function handleDrawerOpenChange(open: boolean) {
     if (open) {
       setShouldRenderDrawer(true);
       requestAnimationFrame(() => setIsDrawerOpen(true));
@@ -79,7 +79,7 @@ export function AppHeader() {
     setTimeout(() => {
       setShouldRenderDrawer(false);
     }, 50);
-  };
+  }
 
   useEffect(() => {
     if (isDrawerOpen || shouldRenderDrawer) {

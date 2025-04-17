@@ -5,8 +5,9 @@ import { cwd } from 'node:process';
  * @param {string[]} filenames
  * @returns {string}
  */
-const buildEslintCommand = (filenames) =>
-  `next lint --file ${filenames.map((f) => relative(cwd(), f)).join(' --file ')}`;
+function buildEslintCommand(filenames) {
+  return `next lint --file ${filenames.map((f) => relative(cwd(), f)).join(' --file ')}`;
+}
 
 /**
  * @type {import('lint-staged').Configuration}
