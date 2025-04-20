@@ -1,15 +1,16 @@
 import Link from 'next/link';
 
+import type { ResourceType } from '../definitions/resource';
 import { cn } from '../helpers/cn';
 import { Button } from './ui/button';
 
-type TagProps = Readonly<{
+interface TagProps {
   tag: string;
-  resource: 'articles' | 'projects';
+  resource: ResourceType;
   activeTags?: string[];
-}>;
+}
 
-export function Tag({ tag, resource, activeTags = [] }: TagProps) {
+export function Tag({ tag, resource, activeTags = [] }: Readonly<TagProps>) {
   const isActive = activeTags.includes(tag);
   const tagsFilter = isActive
     ? activeTags.filter((t) => t !== tag)

@@ -2,12 +2,12 @@ import nodemailer from 'nodemailer';
 
 import { env } from '@/core/configs/env.config';
 
-export type SendOptions = {
+export interface SendOptions {
   from: string;
   to: string;
   subject: string;
   html: string;
-};
+}
 
 export function createMailer() {
   const transporter = nodemailer.createTransport({

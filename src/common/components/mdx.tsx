@@ -9,10 +9,10 @@ import { runSync } from '@mdx-js/mdx';
 
 import { cn } from '@/common/helpers/cn';
 
-type MDXProps = {
+interface MDXProps {
   content: string;
   components?: Record<string, ComponentType>;
-};
+}
 
 const sharedComponents: MDXComponents = {
   h2: ({ className, ...props }: ComponentProps<'h2'>) => (

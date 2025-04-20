@@ -9,9 +9,9 @@ import { ProjectHeader } from '@/features/projects/components/project-header';
 
 import { projects } from '@/velite';
 
-type PageProps = Readonly<{
+interface ProjectPageProps {
   params: Promise<{ slug: string }>;
-}>;
+}
 
 function getProjectBySlug(slug: string) {
   return projects.find((project) => project.slug === slug);
@@ -19,7 +19,7 @@ function getProjectBySlug(slug: string) {
 
 export async function generateMetadata({
   params,
-}: PageProps): Promise<Metadata> {
+}: ProjectPageProps): Promise<Metadata> {
   const { slug } = await params;
 
   const project = getProjectBySlug(slug);
@@ -58,7 +58,9 @@ export function generateStaticParams() {
 
 export const dynamicParams = false;
 
-export default async function Page({ params }: PageProps) {
+export default async function ProjectPage({
+  params,
+}: Readonly<ProjectPageProps>) {
   const { slug } = await params;
 
   const project = getProjectBySlug(slug);

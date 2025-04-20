@@ -1,24 +1,12 @@
+import type {
+  ActiveResourceTags,
+  BaseResource,
+  FilteredResource,
+  ResourceType,
+} from '../definitions/resource';
 import type { SearchParams } from '../definitions/search-params';
 import type { Tag } from '@/velite';
 import { tagsParamSchema } from '../validators/tag';
-
-type ActiveResourceTags = {
-  activeTags: string[];
-  resourceTags: Tag[];
-};
-
-type BaseResource = {
-  date: string;
-  tags: string[];
-};
-
-type FilteredResource<T extends BaseResource> = {
-  filteredResource: T[];
-  activeTags: string[];
-  resourceTags: Tag[];
-};
-
-type ResourceType = 'articles' | 'projects';
 
 function getTagsFromParams(params: Awaited<SearchParams>): string[] {
   const selectedTags: string[] = [];

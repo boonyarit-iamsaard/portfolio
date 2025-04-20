@@ -15,9 +15,9 @@ import {
 import type { SearchParams } from '@/common/definitions/search-params';
 import { articles, tags } from '@/velite';
 
-type ArticlesPageProps = Readonly<{
+interface ArticlesPageProps {
   searchParams: SearchParams;
-}>;
+}
 
 // TODO: explicitly define keywords
 const keywords = Array.from(
@@ -34,7 +34,9 @@ export const metadata: Metadata = {
   keywords,
 };
 
-export default async function Page({ searchParams }: ArticlesPageProps) {
+export default async function ArticlesPage({
+  searchParams,
+}: Readonly<ArticlesPageProps>) {
   const { filteredResource, activeTags, resourceTags } = await filterByTags(
     articles,
     searchParams,

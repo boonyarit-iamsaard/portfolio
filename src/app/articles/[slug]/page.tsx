@@ -10,9 +10,9 @@ import { ArticleHeader } from '@/features/articles/components/article-header';
 
 import { articles } from '@/velite';
 
-type PageProps = Readonly<{
+interface ArticlePageProps {
   params: Promise<{ slug: string }>;
-}>;
+}
 
 function getArticleBySlug(slug: string) {
   return articles.find((article) => article.slug === slug);
@@ -20,7 +20,7 @@ function getArticleBySlug(slug: string) {
 
 export async function generateMetadata({
   params,
-}: PageProps): Promise<Metadata> {
+}: ArticlePageProps): Promise<Metadata> {
   const { slug } = await params;
 
   const article = getArticleBySlug(slug);
@@ -68,7 +68,9 @@ export function generateStaticParams() {
 
 export const dynamicParams = false;
 
-export default async function Page({ params }: PageProps) {
+export default async function ArticlePage({
+  params,
+}: Readonly<ArticlePageProps>) {
   const { slug } = await params;
 
   const article = getArticleBySlug(slug);

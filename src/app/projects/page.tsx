@@ -12,9 +12,9 @@ import { ProjectCard } from '@/features/projects/components/project-card';
 import type { SearchParams } from '@/common/definitions/search-params';
 import { projects, tags } from '@/velite';
 
-type ProjectsPageProps = Readonly<{
+interface ProjectsPageProps {
   searchParams: SearchParams;
-}>;
+}
 
 // TODO: explicitly define keywords
 const keywords = Array.from(
@@ -31,7 +31,9 @@ export const metadata: Metadata = {
   keywords,
 };
 
-export default async function Page({ searchParams }: ProjectsPageProps) {
+export default async function ProjectsPage({
+  searchParams,
+}: Readonly<ProjectsPageProps>) {
   const { filteredResource, activeTags, resourceTags } = await filterByTags(
     projects,
     searchParams,

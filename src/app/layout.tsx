@@ -14,9 +14,9 @@ import { Toaster } from '@/common/components/ui/sonner';
 import { TooltipProvider } from '@/common/components/ui/tooltip';
 import { cn } from '@/common/helpers/cn';
 
-type RootLayoutProps = Readonly<{
+interface RootLayoutProps {
   children: ReactNode;
-}>;
+}
 
 export const metadata: Metadata = {
   title: {
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
   icons: [],
 };
 
-export default function RootLayout({ children }: RootLayoutProps) {
+export default function RootLayout({ children }: Readonly<RootLayoutProps>) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body

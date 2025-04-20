@@ -37,6 +37,7 @@ const eslintConfig = [
           fixStyle: 'separate-type-imports',
         },
       ],
+      '@typescript-eslint/no-unsafe-declaration-merging': 'error',
       '@typescript-eslint/no-unused-vars': [
         'warn',
         {
